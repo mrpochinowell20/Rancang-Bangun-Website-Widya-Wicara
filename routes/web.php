@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SolutionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('admin')->group(function() {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get("/solutions", [SolutionsController::class, 'index'])->name('solutions');
 });
