@@ -50,6 +50,22 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{route('siska')}}" class="nav-link {{ $elementActive == 'siska' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-shapes"></i>
+            <p>
+              Siska
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('lokasi.index')}}" class="nav-link {{ $elementActive == 'lokasi' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-shapes"></i>
+            <p>
+              Lokasi
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -31,6 +31,23 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('vendor/adminlte') }}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<form action="" id="delete-form" method="post">
+    @method('delete')
+    @csrf
+</form>
+<script>
+    $('#example2').DataTable({
+        "responsive": true,
+    });
+
+    function notificationBeforeDelete(event, el) {
+        event.preventDefault();
+        if (confirm('Apakah anda yakin akan menghapus data ? ')) {
+            $("#delete-form").attr('action', $(el).attr('href'));
+            $("#delete-form").submit();
+        }
+    }
+</script>
 <script src="{{ asset('vendor/adminlte') }}/dist/js/pages/dashboard.js"></script>
 </body>
 </html>
