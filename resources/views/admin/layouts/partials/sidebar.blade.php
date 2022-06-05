@@ -1,31 +1,20 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
-    <img src="{{ asset('vendor/adminlte') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
-  </a>
+  <div class="brand-link py-3 bg-white d-flex justify-content-center align-items-center">
+    <img src="{{ asset('assets/img/illustrations') }}/logo_widya.png" alt="Logo" class="brand-image mx-auto">
+  </div>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="{{ asset('vendor/adminlte') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="{{ asset('assets/img/icons') }}/ic_user_default.svg" class="img-circle elevation-2" alt="User Image">
       </div>
-      <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
-      </div>
-    </div>
-
-    <!-- SidebarSearch Form -->
-    <div class="form-inline">
-      <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-sidebar">
-            <i class="fas fa-search fa-fw"></i>
-          </button>
-        </div>
+      <div class="info mb-0">
+        @if (auth()->user())
+          <span class="d-block h5 text-white mb-0">{{auth()->user()->name}}</span>
+        @endif
       </div>
     </div>
 
@@ -50,22 +39,18 @@
             </p>
           </a>
         </li>
+        @role('super_admin')
+        {{-- User --}}
         <li class="nav-item">
-          <a href="{{route('siska')}}" class="nav-link {{ $elementActive == 'siska' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-shapes"></i>
+          <a href="{{ route('user.index') }}" class="nav-link {{ $elementActive == 'user' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
             <p>
-              Siska
+              Data User
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{route('lokasi.index')}}" class="nav-link {{ $elementActive == 'lokasi' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-shapes"></i>
-            <p>
-              Lokasi
-            </p>
-          </a>
-        </li>
+        {{-- User --}}
+        @endrole
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

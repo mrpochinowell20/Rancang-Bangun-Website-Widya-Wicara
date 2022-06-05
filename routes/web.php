@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SolutionsController;
-use App\Http\Controllers\Admin\SiskaController;
-use App\Http\Controllers\Admin\LokasiController;
-use App\Http\Controllers\TempatController;
+use App\Http\Controllers\Admin\UserContoller;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,17 +19,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('clients.pages.index');
+});
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/solutions', [SolutionsController::class, 'index'])->name('solutions');
+    });
+    Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/solutions', [SolutionsController::class, 'index'])->name('solutions');
-    Route::get('/siska', [SiskaController::class, 'index'])->name('siska');
-    Route::resource('lokasi', TempatController::class);
-    // Route::resource('lokasi', \App\Http\Controllers\LokasiController::class);
-    // Route::get('/lokasi', [LokasiController::class, 'index'])->name('lokasi');
-    // Route::get('/lokasi/edit', [LokasiController::class, 'edit'])->name('lokasi.edit');
-    // Route::get('/lokasi/tambah', [LokasiController::class, 'tambah'])->name('lokasi.tambah');
-    // Route::get('/lokasi/delete', [LokasiController::class, 'delete'])->name('lokasi.delete');
+    Route::resource('user', UserContoller::class)->middleware('role:super_admin');
 });

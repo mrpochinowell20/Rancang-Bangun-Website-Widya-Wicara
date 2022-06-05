@@ -28,26 +28,48 @@
 <script src="{{ asset('vendor/adminlte') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('vendor/adminlte') }}/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<form action="" id="delete-form" method="post">
-    @method('delete')
-    @csrf
-</form>
+{{-- Datatables --}}
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('vendor/adminlte') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script>
-    $('#example2').DataTable({
-        "responsive": true,
-    });
-
-    function notificationBeforeDelete(event, el) {
-        event.preventDefault();
-        if (confirm('Apakah anda yakin akan menghapus data ? ')) {
-            $("#delete-form").attr('action', $(el).attr('href'));
-            $("#delete-form").submit();
+  $(function() {
+    $('#btn-logout').on('click', () => {
+      Swal.fire({
+        title: 'Apakah anda ingin keluar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Ya'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+          $.ajax({
+            url: "/logout",
+            method: 'POST',
+            success: function() {
+              window.location.href = "/login"
+            }
+          });
         }
-    }
+      })
+    })
+  })
 </script>
-<script src="{{ asset('vendor/adminlte') }}/dist/js/pages/dashboard.js"></script>
+@yield('javascript');
 </body>
 </html>

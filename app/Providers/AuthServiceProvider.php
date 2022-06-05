@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Blade::if('role', function ($role) {
+            if (!auth()->user()) {
+                return 0;
+            }
+            if (auth()->user()->level === $role) {
+                return 1;
+            }
+            return 0;
+        });
     }
 }
