@@ -1,9 +1,9 @@
 @extends('admin.layouts.app', [
-  'elementActive' => 'solutions'
+  'elementActive' => 'solution'
 ])
 
 @section('content')
 <div>
-  <h1>Solutions</h1>
+  <h1>Solution</h1>
 </div>
 @endsection

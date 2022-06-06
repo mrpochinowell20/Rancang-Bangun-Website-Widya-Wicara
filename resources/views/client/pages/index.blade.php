@@ -1,4 +1,4 @@
-@extends('clients.layouts.app', [
+@extends('client.layouts.app', [
   'elementActive' => 'home'
 ])
 

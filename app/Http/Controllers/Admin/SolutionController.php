@@ -3,10 +3,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-class SolutionsController extends Controller
+class SolutionController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.solutions');
+        return view('admin.pages.solution.index');
     }
 }

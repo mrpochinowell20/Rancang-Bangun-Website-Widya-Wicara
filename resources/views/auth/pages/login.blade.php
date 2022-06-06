@@ -1,4 +1,4 @@
-@extends('clients.layouts.plain')
+@extends('client.layouts.plain')
 
 @section('title', 'Login | Widya Wicara')
 
