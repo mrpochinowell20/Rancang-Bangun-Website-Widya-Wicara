@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
-use App\Models\Solution;
+use App\Models\Feature;
 use Yajra\DataTables\DataTables;
 
-class SolutionController extends Controller
+class FeatureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,14 @@ class SolutionController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.solution.index',['solution'=>Solution::all()]);
+        return view('admin.pages.feature.index',['feature'=>Feature::all()]);
     }
 
     public function detail($id)
     {
         $data = [
-            'solution' => Solution::find($id)];
-        return view('admin.pages.solution.detail',$data);
+            'feature' => Feature::find($id)];
+        return view('admin.pages.feature.detail',$data);
     }
 
 
@@ -35,7 +35,7 @@ class SolutionController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.solution.create');
+        return view('admin.pages.feature.create');
     }
 
     /**
@@ -52,8 +52,11 @@ class SolutionController extends Controller
             'subtitle' => 'required',
             'deskriptions' => 'required',
             'icon' => 'required' ,
-
+            'solution_id' => 'sometimes|required',
         ]);
+
+        $solution_id = $request->solution_id ?: 0;
+
         $file = $request->file('icon');
         $ext_file = $file->getClientOriginalExtension();
 		// $ext_file_pria = $file_pria->getClientOriginalExtension();
@@ -65,27 +68,18 @@ class SolutionController extends Controller
       	// isi dengan nama folder tempat kemana file diupload
 		$tujuan_story = 'data_file';
 		$file->move($tujuan_story,$nama_file);
-		// $file_pria->move($tujuan_upload,$nama_file_pria);
+		// $file_pria->move($tujuan_upload,$nama_file_pria)
+
  
-		Solution::create([
+		Feature::create([
             'nama' => $request->nama,
             'subtitle' => $request->subtitle,
             'deskriptions' => $request->deskriptions,
             'icon' => $nama_file,
-
-            
+            'solution_id' => $solution_id,
 		]);
  
-		return redirect()->route('solution.index');
-
-        // Solution::create([
-        //     'nama' => $request->nama,
-        //     'subtitle' => $request->subtitle,
-        //     'deskription' => $request->deskription,
-        //     'icon' => $request->icon,
-
-    	// ]);
-        // return redirect()->route('solution.index');
+		return redirect()->route('feature.index');
 
     }
 
@@ -108,8 +102,8 @@ class SolutionController extends Controller
      */
     public function edit($id)
     {
-        $solution=Solution::find($id);
-        return view('admin.pages.solution.edit',['solution'=>$solution]);
+        $feature=Feature::find($id);
+        return view('admin.pages.feature.edit',['feature'=>$feature]);
     }
 
     /**
@@ -129,14 +123,14 @@ class SolutionController extends Controller
 
         ]);
 
-        $solution = Solution::find($id);
+        $feature = Feature::find($id);
 
         // cek icon apakah sudah ada 
-        $icon = !empty($solution->icon) ? true : false;
+        $icon = !empty($feature->icon) ? true : false;
 
         if ($request->icon) {
         if ($icon) {
-            File::delete($solution->icon);
+            File::delete($feature->icon);
         }
         $file = $request->file('icon');
         $ext_file = $file->getClientOriginalExtension();
@@ -152,18 +146,18 @@ class SolutionController extends Controller
 		// $file_pria->move($tujuan_upload,$nama_file_pria);
  
 
-        $solution->update([ 
+        $feature->update([ 
             'icon' => $nama_file ,
         ]);
     }
 
-    $solution->update([
+    $feature->update([
         "nama" => $request->nama,
         "subtitle" => $request->subtitle,
         "deskriptions" => $request->deskriptions,
       
     ]);
-        return redirect()->route('solution.index');
+        return redirect()->route('feature.index');
     }
 
     /**
@@ -174,51 +168,25 @@ class SolutionController extends Controller
      */
     public function destroy($id)
     {
-        $solution = Solution::find($id);
-        $solution->delete();
+        $feature = Feature::find($id);
+        $feature->delete();
 
-        return redirect()->route('solution.index');
+        return redirect()->route('feature.index');
     }
     public function uplod($id)
     {
-        $solution = Solution::find($id);
-        $solution->uplod();
+        $feature = Feature::find($id);
+        $feature->uplod();
 
-        return redirect()->route('solution.index');
+        return redirect()->route('feature.index');
     }
 
-    public function getSolution(Request $request) {
+    public function getFeature(Request $request) {
         if (!$request->ajax()) {
             return '';
         }
         
-        $data = Solution::all();
-
-        return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('icon', function($row) {
-                return '<img width="100px" src="/data_file/'. $row->icon . '" alt="">';
-            })
-            ->addColumn('action', function($row) {
-                $detailBtn =  '<a href="' . route('solution.detail', $row) . '" class="btn btn-md btn-warning mr-2 mb-2 mb-lg-0"><i class="fas fa-hand-point-up"></i> Detail </a>';
-                $editBtn = '<a href="' . route('solution.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
-                $deleteBtn = '<a href="' . route('solution.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete </a>';
-                
-                return $detailBtn . $editBtn . $deleteBtn ;
-            })
-            ->rawColumns(['icon', 'action'])
-            ->make(true);
-
-    }
-
-    public function getSolutionDetail(Request $request) {
-        if (!$request->ajax()) {
-            return '';
-        }
-        
-        $data = Solution::join('feature', 'feature.solution_id', '=', 'solution.id')
-            ->select('feature.*')
-            ->where('feature.solution_id', $request->id)->get();
+        $data = Feature::all();
 
         return DataTables::of($data)
             ->addIndexColumn()
@@ -228,8 +196,7 @@ class SolutionController extends Controller
             ->addColumn('action', function($row) {
                 $editBtn = '<a href="' . route('feature.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
                 $deleteBtn = '<a href="' . route('feature.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete </a>';
-                
-                return $editBtn . $deleteBtn ;
+                return $editBtn . $deleteBtn;
             })
             ->rawColumns(['icon', 'action'])
             ->make(true);

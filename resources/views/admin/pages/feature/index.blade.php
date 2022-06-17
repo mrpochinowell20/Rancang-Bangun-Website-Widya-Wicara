@@ -1,19 +1,19 @@
 @extends('admin.layouts.app', [
-  'elementActive' => 'solution'
+  'elementActive' => 'feature'
 ])
 
-@section('title', 'Data Solution');
+@section('title', 'Data Feature');
 
 @section("content")
 <div>
   <div class = "row">
     <div class = "col-md-12">
-      <h1>Solution<h1>
+      <h1>Feature<h1>
     </div>
     <div class="col-md-12">
       <div class="container-fluid bg-white p-4">
         <div class="mb-4">
-          <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalTambahBarang">Create data Solution</button>
+          <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalTambahBarang">Create data Feature</button>
           <div class="modal fade" id="modalTambahBarang" tabindex="-1" aria-labelledby="modalTambahBarang" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
@@ -23,7 +23,7 @@
             </button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="{{route('solution.store')}}"enctype="multipart/form-data">
+            <form method="POST" action="{{route('feature.store')}}"enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="form-group">
                 <label for="nama">Nama</label>
@@ -36,7 +36,7 @@
                 <small class="text-danger">{{ $errors->first('name') }}</small>
               </div>
               <div class="form-group">
-                <label for="nama">Deskriptions</label>
+                <label for="nama">Descriptions</label>
                 <input type="text" class="form-control" id="nama" name="deskriptions" placeholder="Masukan Deskripsi" required>
                 <small class="text-danger">{{ $errors->first('nama') }}</small>
               </div>
@@ -76,7 +76,7 @@
                 processing: true,
                 serverSide: true,
                 responsive: true,
-                ajax: "{{ route('solution.list') }}",
+                ajax: "{{ route('feature.list') }}",
                 columns: [
                 {data: 'nama', name: 'nama'},
                 {data: 'subtitle', name: 'subtitle'},
