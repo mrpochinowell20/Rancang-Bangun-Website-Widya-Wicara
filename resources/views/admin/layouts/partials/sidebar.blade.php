@@ -39,6 +39,22 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+            <a href="{{route('partner.index')}}" class="nav-link {{ $elementActive == 'partner.index' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Partner
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('testimonial.index')}}" class="nav-link {{ $elementActive == 'testimonial.index' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-comment"></i>
+              <p>
+                Testimoni
+              </p>
+            </a>
+          </li>
         @role('super_admin')
         {{-- User --}}
         <li class="nav-item">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLokasiTable extends Migration
+class CreatePartnerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateLokasiTable extends Migration
      */
     public function up()
     {
-        Schema::create('lokasi', function (Blueprint $table) {
-            $table->id();
-            $table->string("desa");
-            $table->string("kecamatan");
-            $table->string("kabupaten");
-            $table->timestamps();
+        Schema::create('partner', function (Blueprint $table) {
+            $table->bigIncrements('id');
+                $table->text('nama');
+                $table->string('logo');
+                $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateLokasiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lokasi');
+        Schema::dropIfExists('partner');
     }
 }
