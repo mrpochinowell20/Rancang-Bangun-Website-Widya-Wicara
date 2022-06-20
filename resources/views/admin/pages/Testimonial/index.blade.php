@@ -31,26 +31,26 @@
                 <form method="POST" action="{{route('testimonial.store')}}"enctype="multipart/form-data">
                   {{ csrf_field() }}
                   <div class="form-group">
-                    <label for="nama">Foto</label>
+                    <label for="nama">Image</label>
                     <input type="file" name='image' class="form-control" id="image" placeholder="Masukkan Foto">
                   </div>
                   <div class="form-group">
-                    <label for="nama">Nama</label>
+                    <label for="nama">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Pekerjaan</label>
+                    <label for="nama">Job</label>
                     <input type="text" class="form-control" id="job" name="job" placeholder="Masukan Pekerjaan" required>
                     <small class="text-danger">{{ $errors->first('name') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Testimoni</label>
+                    <label for="nama">Testimonial</label>
                     <textarea name="testimonial" id="testimonial" class="form-control" cols="30" rows="10"></textarea>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Tanggal</label>
+                    <label for="nama">Date</label>
                     <input type="date" class="date form-control" id="date" name="date" placeholder="Masukan Tanggal" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
@@ -75,26 +75,26 @@
                 <form method="POST" action="{{route('testimonial.store')}}"enctype="multipart/form-data">
                   {{ csrf_field() }}
                   <div class="form-group">
-                    <label for="nama">Foto</label>
+                    <label for="nama">Image</label>
                     <input type="file" name='image' class="form-control" id="image" placeholder="Masukkan Foto">
                   </div>
                   <div class="form-group">
-                    <label for="nama">Nama</label>
+                    <label for="nama">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Pekerjaan</label>
+                    <label for="nama">Job</label>
                     <input type="text" class="form-control" id="job" name="job" placeholder="Masukan Pekerjaan" required>
                     <small class="text-danger">{{ $errors->first('name') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Testimoni</label>
+                    <label for="nama">Testimonial</label>
                     <textarea name="testimonial" id="testimonial" class="form-control" cols="30" rows="10"></textarea>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Tanggal</label>
+                    <label for="nama">Date</label>
                     <input type="hidden" class="date form-control" id="date" name="date" placeholder="Masukan Tanggal" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
@@ -112,12 +112,12 @@
         <table class="table table-bordered yajra-datatable">
           <thead>
               <tr>
-                  <th>Foto</th>
-                  <th>Nama</th>
-                  <th>Pekerjaan</th>
-                  <th>Testimoni</th>
-                  <th>Tanggal</th>
-                  <th>Aksi</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Job</th>
+                  <th>Testimonial</th>
+                  <th>Date</th>
+                  <th>Action</th>
               </tr>
           </thead>
           <tbody>

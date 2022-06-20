@@ -23,17 +23,17 @@
 
                         {{ csrf_field() }}
                         <div class="form-group">
-                        <label>Nama</label>
+                        <label>Name</label>
                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Data">
                         </div>
 
                         <div class="form-group">
-                            <label>Logo</label>
+                            <label>Icon</label>
                             <input type="file" name="logo" class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Simpan">
+                            <input type="submit" class="btn btn-success" value="Submit">
                         </div>
 
                     </form>

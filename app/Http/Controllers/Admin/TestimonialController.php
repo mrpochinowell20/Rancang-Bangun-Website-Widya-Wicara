@@ -36,7 +36,7 @@ class TestimonialController extends Controller
         // Olah data gambar
         if ($image = $request->file('image')) {
 
-            $destionation = 'assets/img/';
+            $destionation = 'data_file/';
             $nameImage = date('YmdHis').".".$image->getClientOriginalExtension();
             $image->move($destionation, $nameImage);
             $data['image'] = $nameImage;

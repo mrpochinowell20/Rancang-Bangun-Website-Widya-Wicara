@@ -22,34 +22,34 @@
 
                   <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Foto</label>
+                        <label for="exampleInputPassword1">Image</label>
                         <img  id="image-preview-update" width="100px" src="/assets/img/{{$testimonial->image}}" alt="">
                         <input value="{{ $testimonial->image ?? old('image') }}"
                         type="file" name='image' class="form-control" id="image-source-update" onchange="previewImageUpdate();"/>
                       </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
+                      <label for="exampleInputEmail1">Name</label>
                       <input value="{{ $testimonial->name ?? old('name') }}"
                       type="text" name='name' class="form-control" id="name" placeholder="Masukkan Nama " >
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Pekerjaan</label>
+                      <label for="exampleInputPassword1">Job</label>
                       <input value="{{ $testimonial->job ?? old('job') }}"
                       type="text" name='job' class="form-control" id="job" placeholder="Masukkan Pekerjaan " >
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Testimoni</label>
+                        <label for="exampleInputPassword1">Testimonial</label>
                         <textarea name="testimonial" id="testimonial" class="form-control">{{ $testimonial->testimonial ?? old('testimonial') }}</textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Tanggal</label>
+                        <label for="exampleInputPassword1">Date</label>
                         <input value="{{ $testimonial->date ?? old('date') }}"
                         type="text" name='date' class="date form-control" id="date" placeholder="Masukkan Tanggal" >
                       </div>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">submit</button>
                   </div>
                 </form>
               </div>
@@ -73,10 +73,10 @@
              </script>
              <script type="text/javascript">
 
-              $('.date').datepicker({  
-          
+              $('.date').datepicker({
+
                  format: 'yyyy-mm-dd'
-          
-               });  
-            </script> 
+
+               });
+            </script>
 @endsection
