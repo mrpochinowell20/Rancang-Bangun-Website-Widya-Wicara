@@ -46,11 +46,14 @@
               </div>
               <button type="submit" class="btn btn-success mt-4">Submit</button>
             </form>
-            </div>
-            </div>
-            </div>
-            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+
+
+
 <div class="w-100">
         <table class="table table-bordered yajra-datatable">
             <thead>

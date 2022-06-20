@@ -18,7 +18,7 @@ class CreateSolutionTable extends Migration
             $table->string('nama', 30);
             $table->text('subtitle');
             $table->text('deskriptions');
-            $table->text('icons');
+            $table->text('icon');
             $table->timestamps();
         });
     }

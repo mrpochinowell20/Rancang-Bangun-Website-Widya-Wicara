@@ -39,14 +39,14 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{route('feature.index')}}" class="nav-link {{ $elementActive == 'feature' ? 'active' : '' }}">
             <i class="nav-icon fas fa-paw"></i>
             <p>
               Feature
             </p>
           </a>
-        </li>
+        </li> --}}
         @role('super_admin')
         {{-- User --}}
         <li class="nav-item">
