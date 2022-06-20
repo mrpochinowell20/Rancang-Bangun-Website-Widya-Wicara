@@ -18,10 +18,9 @@
         <table class="table table-bordered data-table-user">
           <thead>
               <tr>
-                <th>No</th>
-                <th>Data</th>
-                <th>Keterangan</th>
-                <th>Aksi</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Action</th>
               </tr>
           </thead>
           <tbody>
@@ -41,7 +40,6 @@
         responsive: true,
         ajax: "{{ route('company.index') }}",
         columns: [
-          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
           {data: 'kebutuhan', name: 'kebutuhan'},
           {data: 'keterangan', name: 'keterangan'},
           {data: 'action', name: 'action', orderable: false, searchable: false}

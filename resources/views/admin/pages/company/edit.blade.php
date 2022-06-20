@@ -22,12 +22,12 @@
 
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Data</label>
+                      <label for="exampleInputEmail1">Name</label>
                       <input value="{{ $company->kebutuhan ?? old('kebutuhan') }}"
                       type="text" name='kebutuhan' class="form-control" id="name" placeholder="Masukkan Data" >
                     </div>
                     <div class="form-group">
-                        <label>Keterangan</label>
+                        <label>Content</label>
                           <textarea class="form-control" id="summernote" name="keterangan" rows="10"></textarea>
                       </div>
                   </div>

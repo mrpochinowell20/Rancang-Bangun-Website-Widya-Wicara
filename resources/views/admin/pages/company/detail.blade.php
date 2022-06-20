@@ -15,12 +15,12 @@
           <div class="mb-4">
             <table>
                 <tr>
-                    <th width="100px">Data</th>
+                    <th width="100px">Name</th>
                     <th width="30px">:</th>
                     <th>{{$company->kebutuhan}}</th>
                 </tr>
                 <tr>
-                    <th width="100px">Keterangan</th>
+                    <th width="50px">Content</th>
                     <th width="30px">:</th>
                     <th>{{$company->keterangan}}</th>
                 </tr>

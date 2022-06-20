@@ -70,7 +70,7 @@
                 }
             });
           $.ajax({
-            url: "/admin/user/"+id,
+            url: "/admin/mediasosial/"+id,
             method: 'DELETE',
             success: function(res){
               Swal.fire(

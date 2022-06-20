@@ -26,8 +26,7 @@ class Mediasosial extends Authenticatable
      * @var array
      */
     protected $table = 'mediasosial';
-    protected $primarykey = 'id';
-    protected $fillable = ['id', 'name', 'tipe', 'url', 'icon'];
+    protected $fillable = ['name', 'tipe', 'url', 'icon'];
 
 
 }

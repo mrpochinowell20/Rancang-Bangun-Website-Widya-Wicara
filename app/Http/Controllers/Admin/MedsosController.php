@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comp;
 use App\Models\Mediasosial;
 use Error;
 use Exception;

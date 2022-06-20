@@ -21,9 +21,9 @@
 
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name Aplication</label>
-                    <input value="{{ $mediasoosial->name ?? old('name') }}"
-                    type="text" name='name' class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama Aplikasi">
+                    <label for="exampleInputPassword1">Name</label>
+                    <input value="{{ $mediasosial->name ?? old('name') }}"
+                    type="text" name='name' class="form-control" id="exampleInputPassword1" placeholder="Input Namer">
                 </div>
                 <div class="form-group">
                     <label for="">Type</label>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">URL</label>
                     <input value="{{ $mediasosial->url ?? old('url') }}"
-                    type="text" name='url' class="form-control" id="exampleInputPassword1" placeholder="Masukkan URL">
+                    type="text" name='url' class="form-control" id="exampleInputPassword1" placeholder="Input URL">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Upload Icon</label>

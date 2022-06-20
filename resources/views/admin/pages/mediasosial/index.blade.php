@@ -26,7 +26,7 @@
                 <form method="POST" action="{{route('mediasosial.store')}}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label>Name Aplication</label>
+                        <label>Name</label>
                             <input type="tel" name="name" class="form-control" placeholder="Masukan Nama Sosial Media">
                         </div>
                         <div class="form-group">
@@ -52,11 +52,11 @@
             </div>
             </div>
 </div>
-        <table class="table table-bordered data-table-user">
+        <table class="table table-bordered data-table-mediasosial">
           <thead>
               <tr>
                 <th>No</th>
-                <th>Name Aplication</th>
+                <th>Name</th>
                 <th>Type</th>
                 <th>URL</th>
                 <th>Icon</th>
@@ -72,68 +72,68 @@
 @endsection
 
 @section('javascript')
-<script type="text/javascript">
-  $(document).ready(function () {
-    var table = $('.data-table-user').DataTable({
-        processing: true,
-        serverSide: true,
-        responsive: true,
-        ajax: "{{ route('mediasosial.index') }}",
-        columns: [
-          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-          {data: 'name', name: 'name'},
-          {data: 'tipe', name: 'tipe'},
-          {data: 'url', name: 'url'},
-          {data: 'icon', name: 'icon'},
-          {data: 'action', name: 'action', orderable: false, searchable: false}
-        ]
-    });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.data-table-mediasosial').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                ajax: "{{ route('mediasosial.index') }}",
+                columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'name', name: 'name'},
+                {data: 'tipe', name: 'tipe'},
+                {data: 'url', name: 'url'},
+                {data: 'icon', name: 'icon'},
+                {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
+        });
 
-    $('.data-table-user').on('click', '#btn-delete', function (e) {
-      deleteFunc($(this).data('id'))
-    });
+        $('.data-table-mediasosial').on('click', '#btn-delete', function (e) {
+        deleteFunc($(this).data('id'))
+        });
 
-    function deleteFunc(id){
-      Swal.fire({
-        title: 'Apakah anda yakin menghapus data ini?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Batal',
-        confirmButtonText: 'Yakin, hapus!'
+        function deleteFunc(id){
+        Swal.fire({
+            title: 'Apakah anda yakin menghapus data ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Yakin, hapus!'
 
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $.ajaxSetup({
-                headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            $.ajax({
+                url: "/admin/mediasosial/"+id,
+                method: 'DELETE',
+                success: function(res){
+                Swal.fire(
+                    'Deleted!',
+                    'Data berhasil dihapus.',
+                    'success'
+                )
+                setTimeout(function(){
+                    $('.data-table-mediasosial').DataTable().ajax.reload();
+                }, 1000);
+                },
+                error: function(err){
+                Swal.fire(
+                    'Error!',
+                    'Data gagal dihapus.',
+                    'error'
+                )
                 }
             });
-          $.ajax({
-            url: "/admin/user/"+id,
-            method: 'DELETE',
-            success: function(res){
-              Swal.fire(
-                'Deleted!',
-                'Data berhasil dihapus.',
-                'success'
-              )
-              setTimeout(function(){
-                $('.data-table-user').DataTable().ajax.reload();
-              }, 1000);
-            },
-            error: function(err){
-              Swal.fire(
-                'Error!',
-                'Data gagal dihapus.',
-                'error'
-              )
             }
-          });
+        })
         }
-      })
-    }
-  });
-</script>
+    });
+    </script>
 @endsection
