@@ -29,15 +29,15 @@
                                 <form method="post" action="{{route('partner.store')}}"enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Nama</label>
+                                        <label>Name</label>
                                         <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
                                     </div>
                                     <div class="form-group">
-                                        <label>Logo</label>
+                                        <label>Icon</label>
                                         <input type="file" name="logo" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-success" value="Simpan">
+                                        <input type="submit" class="btn btn-success" value="Submit">
                                     </div>
                                 </form>
                             </div>
@@ -65,12 +65,12 @@
 
                                   <div class="card-body">
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Nama</label>
+                                      <label for="exampleInputEmail1">Name</label>
                                       <input value=""
                                       type="text" name='nama' id="nama" class="form-control" placeholder="Masukkan Nama">
                                     </div>
                                   <div class="form-group">
-                                        <label for="exampleInputPassword1">Logo</label>
+                                        <label for="exampleInputPassword1">Icon</label>
                                         <img id="image-preview-update" width="100px" src="#" alt="">
                                         <input value=""
                                         type="file" name='logo' id="logo" class="form-control" placeholder=""onchange="previewImageUpdate();"/>
@@ -96,9 +96,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Logo</th>
-                            <th>Aksi</th>
+                            <th>Name</th>
+                            <th>Icon</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -161,3 +161,4 @@
         </script>
         @endsection
 @endsection
+ 
