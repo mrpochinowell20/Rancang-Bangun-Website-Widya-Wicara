@@ -15,7 +15,7 @@ class CreateSolutionTable extends Migration
     {
         Schema::create('solution', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 30);
+            $table->string('name', 30);
             $table->text('subtitle');
             $table->text('deskriptions');
             $table->text('icon');

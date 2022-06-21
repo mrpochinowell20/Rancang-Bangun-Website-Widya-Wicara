@@ -18,6 +18,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+              <h5 class="modal-title">Create Solution</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -26,7 +27,7 @@
             <form method="POST" action="{{route('solution.store')}}"enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="form-group">
-                <label for="nama">Nama</label>
+                <label for="nama">Name</label>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama" required>
                 <small class="text-danger">{{ $errors->first('nama') }}</small>
               </div>
@@ -37,7 +38,7 @@
               </div>
               <div class="form-group">
                 <label for="nama">Deskriptions</label>
-                <input type="text" class="form-control" id="nama" name="deskriptions" placeholder="Masukan Deskripsi" required>
+                <textarea class="form-control" id="nama" name="deskriptions" rows="10" placeholder="Masukan Deskripsi" required></textarea>
                 <small class="text-danger">{{ $errors->first('nama') }}</small>
               </div>
               <div class="form-group">
@@ -58,7 +59,7 @@
         <table class="table table-bordered yajra-datatable">
             <thead>
                 <tr>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Subtitle</th>
                     <th>Descriptions</th>
                     <th>Icon</th>

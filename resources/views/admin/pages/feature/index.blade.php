@@ -8,7 +8,7 @@
 <div>
   <div class = "row">
     <div class = "col-md-12">
-      <h1>Feature<h1>
+      <h1>Data Feature<h1>
     </div>
     <div class="col-md-12">
       <div class="container-fluid bg-white p-4">
@@ -26,7 +26,7 @@
             <form method="POST" action="{{route('feature.store')}}"enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="form-group">
-                <label for="nama">Nama</label>
+                <label for="nama">Name</label>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama" required>
                 <small class="text-danger">{{ $errors->first('nama') }}</small>
               </div>
@@ -37,7 +37,7 @@
               </div>
               <div class="form-group">
                 <label for="nama">Descriptions</label>
-                <input type="text" class="form-control" id="nama" name="deskriptions" placeholder="Masukan Deskripsi" required>
+                <textarea class="form-control" id="nama" name="deskriptions" rows="10" placeholder="Masukan Deskripsi" required></textarea>
                 <small class="text-danger">{{ $errors->first('nama') }}</small>
               </div>
               <div class="form-group">
@@ -55,7 +55,7 @@
         <table class="table table-bordered yajra-datatable">
             <thead>
                 <tr>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Subtitle</th>
                     <th>Descriptions</th>
                     <th>Icon</th>

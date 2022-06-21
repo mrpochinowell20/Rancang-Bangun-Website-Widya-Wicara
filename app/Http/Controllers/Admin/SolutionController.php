@@ -76,7 +76,8 @@ class SolutionController extends Controller
             
 		]);
  
-		return redirect()->route('solution.index');
+		// return redirect()->route('solution.index');
+        return redirect()->back();
 
         // Solution::create([
         //     'nama' => $request->nama,
@@ -201,7 +202,7 @@ class SolutionController extends Controller
             })
             ->addColumn('action', function($row) {
                 $detailBtn =  '<a href="' . route('solution.detail', $row) . '" class="btn btn-md btn-warning mr-2 mb-2 mb-lg-0"><i class="fas fa-hand-point-up"></i> Detail </a>';
-                $editBtn = '<a href="' . route('solution.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
+                $editBtn = '<a href="' . route('solution.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit </a>';
                 $deleteBtn = '<a href="' . route('solution.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete </a>';
                 
                 return $detailBtn . $editBtn . $deleteBtn ;
@@ -226,7 +227,7 @@ class SolutionController extends Controller
                 return '<img width="100px" src="/data_file/'. $row->icon . '" alt="">';
             })
             ->addColumn('action', function($row) {
-                $editBtn = '<a href="' . route('feature.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
+                $editBtn = '<a href="' . route('feature.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit </a>';
                 $deleteBtn = '<a href="' . route('feature.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete </a>';
                 
                 return $editBtn . $deleteBtn ;

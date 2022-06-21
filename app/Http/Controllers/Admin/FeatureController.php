@@ -56,6 +56,7 @@ class FeatureController extends Controller
         ]);
 
         $solution_id = $request->solution_id ?: 0;
+    
 
         $file = $request->file('icon');
         $ext_file = $file->getClientOriginalExtension();
@@ -79,7 +80,8 @@ class FeatureController extends Controller
             'solution_id' => $solution_id,
 		]);
  
-		return redirect()->route('feature.index');
+		return redirect()->route('solution.detail', $solution_id);
+        return $solution_id;
 
     }
 
@@ -166,12 +168,13 @@ class FeatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $feature = Feature::find($id);
         $feature->delete();
+        $solution_id = $request->solution_id ?: 0;
 
-        return redirect()->route('feature.index');
+        return redirect()->route('solution.detail', $solution_id);
     }
     public function uplod($id)
     {
@@ -194,7 +197,7 @@ class FeatureController extends Controller
                 return '<img width="100px" src="/data_file/'. $row->icon . '" alt="">';
             })
             ->addColumn('action', function($row) {
-                $editBtn = '<a href="' . route('feature.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
+                $editBtn = '<a href="' . route('feature.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i>Edit</a>';
                 $deleteBtn = '<a href="' . route('feature.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete </a>';
                 return $editBtn . $deleteBtn;
             })

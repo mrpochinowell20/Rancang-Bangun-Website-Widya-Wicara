@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <label for="nama">Deskriptions</label>
-              <input type="text" class="form-control" id="nama" name="deskriptions" placeholder="Masukan Deskripsi" required>
+              <textarea class="form-control" id="nama" name="deskriptions" rows="10" placeholder="Masukan Deskripsi" required></textarea>
               <small class="text-danger">{{ $errors->first('nama') }}</small>
             </div>
             <div class="form-group">

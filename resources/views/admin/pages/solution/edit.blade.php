@@ -22,7 +22,7 @@
 
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
+                      <label for="exampleInputEmail1">Name</label>
                       <input value="{{ $solution->nama ?? old('nama') }}"
                       type="text" name='nama' class="form-control" id="name" placeholder="Masukkan Nama " >
                     </div>
@@ -33,8 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Descriptions</label>
-                        <input value="{{ $solution->deskriptions ?? old('deskriptions') }}"
-                        type="text" name='deskriptions' class="form-control" id="name" placeholder="Masukkan Deskripsi" >
+                        <textarea  class="form-control" id="nama" name="deskriptions" rows="10" placeholder="Masukan Deskripsi" required>{{ $solution->deskriptions ?? old('deskriptions') }}</textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Icon</label>
@@ -45,7 +44,7 @@
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">submit</button>
                   </div>
                 </form>
               </div>
