@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comp;
+use App\Models\Companyy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
@@ -19,7 +19,7 @@ class CompanyController extends Controller
     {
         // dd($request->all());
         if ($request->ajax()) {
-            $data = Comp::get();
+            $data = Companyy::get();
             return DataTables::of($data)
                     ->addColumn('action', function ($item) {
                         return '<div class="d-flex align-items-center">
@@ -30,7 +30,7 @@ class CompanyController extends Controller
                     ->addIndexColumn()
                     ->make(true);
         }
-        return view('admin.pages.company.index');
+        return view('admin.pages.Company.index');
     }
 
     /**
@@ -54,8 +54,8 @@ class CompanyController extends Controller
     {
         // dd($request->all0());
         $request->validate([
-            'kebutuhan' => 'required',
-            'keterangan' => 'required',
+            'nama' => 'required',
+            'content' => 'required',
         ]);
         // $file = $request->file('icon');
         // $ext_file = $file->getClientOriginalExtension();
@@ -70,9 +70,9 @@ class CompanyController extends Controller
 		// $file->move($tujuan_story,$nama_file);
 		// $file_pria->move($tujuan_upload,$nama_file_pria);
 
-        Comp::create([
-    		'kebutuhan' => $request->kebutuhan,
-            'keterangan' => $request->keterangan,
+        Companyy::create([
+    		'nama' => $request->nama,
+            'content' => $request->content,
     	]);
         return redirect()->route('company.index');
 
@@ -99,7 +99,7 @@ class CompanyController extends Controller
     public function detail($id)
     {
         $data = [
-            'company' => Comp::find($id)];
+            'company' => Companyy::find($id)];
         return view('admin.pages.company.detail',$data);
     }
 
@@ -107,7 +107,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         // dd($request->ajax());
-        $company = Comp::find($id);
+        $company = Companyy::find($id);
         return view('admin.pages.company.edit',['company'=>$company]);
     }
 
@@ -123,15 +123,15 @@ class CompanyController extends Controller
     {
         // if exist return error
         $request->validate([
-            'kebutuhan' => 'required',
-            'keterangan' => 'required',
+            'nama' => 'required',
+            'content' => 'required',
         ]);
-        $company = Comp::find($id);
+        $company = Companyy::find($id);
 
         // proses simpan
         $company->update([
-            'kebutuhan' => $request->kebutuhan,
-            'keterangan' => $request->keterangan,
+            'nama' => $request->nama,
+            'content' => $request->content,
         ]);
 
         return redirect()->route('company.index');
@@ -145,7 +145,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = Comp::find($id);
+        $company = Companyy::find($id);
         $company->delete();
 
         return redirect()->route('company.index');
@@ -153,16 +153,16 @@ class CompanyController extends Controller
 
     public function getCompanyDetail(Request $request) {
         if ($request->ajax()) {
-            $data = Comp::get();
+            $data = Companyy::get();
             return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function($row) {
-                $editBtn = '<a href="' . route('company.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
-                $deleteBtn = '<a href="' . route('company.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-success float-right mb-1" data-toggle="modal" data-target="#modalTambahBarang"> Detail </button></a>';
+            // ->addColumn('action', function($row) {
+            //     $editBtn = '<a href="' . route('Company.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Update </a>';
+            //     $deleteBtn = '<a href="' . route('Company.destroy', $row) . '"  onclick="notificationBeforeDelete(event, this)" class="btn btn-success float-right mb-1" data-toggle="modal" data-target="#modalTambahBarang"> Detail </button></a>';
 
-                return $editBtn . $deleteBtn ;
-            })
-            ->rawColumns(['action'])
+            //     return $editBtn . $deleteBtn ;
+            // })
+            // ->rawColumns(['action'])
             ->make(true);
         }
     }

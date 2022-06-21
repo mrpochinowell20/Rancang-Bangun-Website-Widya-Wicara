@@ -5,16 +5,13 @@
 @section('title', 'Edit | Data Media Sosial');
 
 @section('content')
-<div class="col-12 col-md-4">
+<section class="content">
+    <div class="col-md-12 col-lg-6">
   <section class="container-fluid">
-    <div class="card card-default color-palette-box">
-      <div class="card-header">
-        <h3 class="card-title">
-          Edit
-        </h3>
-      </div>
-      <div class="card-body">
-        <div class="col-12">
+    <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Update Media</h3>
+        </div>
           <form method="POST" action="{{route('mediasosial.update',$mediasosial->id)}} "enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
@@ -45,6 +42,7 @@
                     type="file" name='icon' class="form-control" id="image-source-update" onchange="previewImageUpdate();"/>
                 </div>
             </div>
+            <div class="card-footer">
             <button type="submit" class="btn btn-success mt-4">Submit</button>
           </form>
         </div>

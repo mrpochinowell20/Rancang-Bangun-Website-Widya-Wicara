@@ -23,6 +23,10 @@
             </button>
             </div>
             <div class="modal-body">
+                <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Create Media</h3>
+                    </div>
                 <form method="POST" action="{{route('mediasosial.store')}}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">

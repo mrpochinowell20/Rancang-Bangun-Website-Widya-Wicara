@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class Comp extends Authenticatable
+class Companyy extends Authenticatable
 {
     use Notifiable;
     // use Auditable;
@@ -22,17 +22,17 @@ class Comp extends Authenticatable
 
     public function detailData($id)
     {
-        return DB::table('compan')->where('id', $id)->first();
+        return DB::table('company')->where('id', $id)->first();
     }
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $table = 'compan';
+    protected $table = 'company';
     protected $primarykey = 'id';
     protected $fillable = [
-        'kebutuhan', 'keterangan',
+        'nama', 'content',
     ];
 
 }

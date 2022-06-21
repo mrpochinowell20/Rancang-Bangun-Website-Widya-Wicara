@@ -10,7 +10,7 @@
             <!-- left column -->
             <div class="col-md-12 col-lg-6">
               <!-- general form elements -->
-              <div class="card card-primary">
+              <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">Update Company</h3>
                 </div>
@@ -23,17 +23,17 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
-                      <input value="{{ $company->kebutuhan ?? old('kebutuhan') }}"
-                      type="text" name='kebutuhan' class="form-control" id="name" placeholder="Masukkan Data" >
+                      <input value="{{ $company->nama ?? old('nama') }}"
+                      type="text" name='nama' class="form-control" id="name" placeholder="Masukkan Nama" >
                     </div>
                     <div class="form-group">
                         <label>Content</label>
-                          <textarea class="form-control" id="summernote" name="keterangan" rows="10"></textarea>
+                          <textarea class="form-control" id="summernote" name="content" rows="10"></textarea>
                       </div>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </form>
               </div>

@@ -17,12 +17,12 @@
                 <tr>
                     <th width="100px">Name</th>
                     <th width="30px">:</th>
-                    <th>{{$company->kebutuhan}}</th>
+                    <th>{{$company->nama}}</th>
                 </tr>
                 <tr>
                     <th width="50px">Content</th>
                     <th width="30px">:</th>
-                    <th>{{$company->keterangan}}</th>
+                    <th>{{$company->content}}</th>
                 </tr>
             </table>
 

@@ -7,6 +7,7 @@ use App\Models\Mediasosial;
 use Error;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Yajra\DataTables\DataTables;
 
@@ -178,10 +179,18 @@ class MedsosController extends Controller
      */
     public function destroy($id)
     {
-        $mediasosial = Mediasosial::find($id);
-        $mediasosial->delete();
+        try {
+            $mediasosial = Mediasosial::find($id);
 
-        return redirect()->route('mediasosial.index');
+            if ($mediasosial->username == Auth::user()->username) {
+                throw new Error('Data gagal dihapus');
+            }
+            return $mediasosial->delete();
+        } catch (Exception $e) {
+            return json_encode(array(
+                'error' => "Data gagal dihapus"
+            ));
+        }
     }
 
     public function uplod($id)

@@ -40,8 +40,8 @@
         responsive: true,
         ajax: "{{ route('company.index') }}",
         columns: [
-          {data: 'kebutuhan', name: 'kebutuhan'},
-          {data: 'keterangan', name: 'keterangan'},
+          {data: 'nama', name: 'nama'},
+          {data: 'content', name: 'content'},
           {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
