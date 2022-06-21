@@ -6,17 +6,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 
-class User extends Authenticatable
+class Testimonial extends Authenticatable
 {
     use Notifiable;
-    // use Auditable;
-    /**
-     * {@inheritdoc}
-     */
+
     public static function resolveId()
     {
-        return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
+        return Auth::check() ? Auth::testimonial()->getAuthIdentifier() : null;
     }
 
     protected $guarded = ['id'];
+
 }
