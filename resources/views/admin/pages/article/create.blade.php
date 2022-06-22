@@ -42,8 +42,8 @@
     </div>
 
     <div class="form-group">
-      <input type="submit" name="status" class="btn btn-md btn-primary" value="Publish">
-      <input type="submit" name="status" class="btn btn-success" value="Save as Draft">
+      <input type="submit" name="status" class="btn btn-success" value="Publish">
+      <input type="submit" name="status" class="btn btn-md btn-primary" value="Save as Draft">
     </div>
  
     </form>   
