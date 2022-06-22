@@ -5,7 +5,7 @@
 
             <div class="panel panel-default mt-5">
                 <div class="panel-heading  text-center">
-                <strong> CREATE FOTO</strong>
+                <strong> CREATE GALERI</strong>
                 </div>
                 <div class="panel-body">
                     <br/>
@@ -16,17 +16,17 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label>Foto</label>
-                            <input type="file" name="foto" class="form-control" placeholder="">
+                            <label>Image</label>
+                            <input type="file" name="image" class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label>Keterangan</label>
-                            <input type="text" name="keterangan" class="form-control" placeholder="">
+                            <label>Description</label>
+                            <input type="text" name="description" class="form-control" placeholder="">
                         </div>
  
                         <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Simpan">
+                            <input type="submit" class="btn btn-success" value="Submit">
                         </div>
  
                     </form>

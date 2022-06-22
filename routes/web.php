@@ -40,7 +40,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('getArticlePublish', [ArticleController::class, 'getArticlePublish'])->name('article.list.publish');
         Route::get('getArticleDraft', [ArticleController::class, 'getArticleDraft'])->name('article.list.draft');
         Route::delete('/article/{id}/delete', [ArticleController::class, 'destroy']);
-        Route::get('/views/pages/article/checkSlug', [ArticleController::class,'checkSlug'])->middleware('auth');
     });
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

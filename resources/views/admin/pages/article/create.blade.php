@@ -2,10 +2,16 @@
   'elementActive' => 'create'
 ])
 @section('content')
-    <div class="panel panel-default mt-5">
-    <div class="panel-heading  text-center">
-        <strong> CREATE NEW ARTICLE</strong>
-    </div>
+<div class="col-12 col-md-10">
+  <section class="container-fluid">
+    <div class="card card-default color-palette-box">
+      <div class="card-header">
+        <h3 class="card-title">
+          Create New Article
+        </h3>
+      </div>
+      <div class="card-body">
+        <div class="col-12">
         <form method="post" action="{{route('article.store')}}"enctype="multipart/form-data">
  
             {{ csrf_field() }}
@@ -36,8 +42,8 @@
     </div>
 
     <div class="form-group">
-      <input type="submit" name="status" class="btn btn-success" value="Publish">
-      <input type="submit" name="status" class="btn btn-success" value="Draft">
+      <input type="submit" name="status" class="btn btn-md btn-primary" value="Publish">
+      <input type="submit" name="status" class="btn btn-success" value="Save as Draft">
     </div>
  
     </form>   

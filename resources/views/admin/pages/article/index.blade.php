@@ -12,7 +12,7 @@
           <div class="mb-4">
             <div class="container-small">
                 <div class="row">
-                    <a href="{{ route('article.create') }}" class="btn btn-success">
+                    <a href="{{ route('article.create') }}" class="btn btn-md btn-primary">
                         Create New Article
                     </a>
 
@@ -31,12 +31,11 @@
                                         <table class="table table-bordered yajra-datatable-publish">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>No</th>
                                                     <th>Title</th>
                                                     <th>Slug</th>
                                                     <th>Category</th>
-                                                    <th>Content</th>
-                                                    <th>Aksi</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -46,12 +45,11 @@
                                         <table class="table table-bordered yajra-datatable-draft w-100">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>No</th>
                                                     <th>Title</th>
                                                     <th>Slug</th>
                                                     <th>Category</th>
-                                                    <th>Content</th>
-                                                    <th>Aksi</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -93,7 +91,6 @@
             {data: 'title', name: 'title'},
             {data: 'slug', name: 'slug'},
             {data: 'category', name: 'category'},
-            {data: 'content', name: 'content'},
             {
                 data: 'action',
                 name: 'action',
@@ -114,7 +111,6 @@
             {data: 'title', name: 'title'},
             {data: 'slug', name: 'slug'},
             {data: 'category', name: 'category'},
-            {data: 'content', name: 'content'},
             {
                 data: 'action',
                 name: 'action',

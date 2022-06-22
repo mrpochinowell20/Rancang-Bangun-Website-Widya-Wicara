@@ -40,10 +40,10 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foto' => 'required',
-            'keterangan' => 'required',
+            'image' => 'required',
+            'description' => 'required',
         ]);
-        $file = $request->file('foto');
+        $file = $request->file('image');
         $ext_file = $file->getClientOriginalExtension();
 		// $ext_file_pria = $file_pria->getClientOriginalExtension();
  
@@ -57,8 +57,8 @@ class GaleriController extends Controller
 		// $file_pria->move($tujuan_upload,$nama_file_pria);
  
         Galeri::create([
-    		'foto' => $nama_file,
-    		'keterangan' => $request->keterangan,   
+    		'image' => $nama_file,
+    		'description' => $request->description,   
     	]);
         return redirect()->route('galeri.index');
 
@@ -97,20 +97,20 @@ class GaleriController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "foto" => "nullable|sometimes|image",
-            "keterangan" => "required",
+            "image" => "nullable|sometimes|image",
+            "description" => "required",
         ]);
         $galeri = Galeri::find($id);
 
         // cek foto apakah sudah ada
-        $foto = !empty($galeri->foto) ? true : false;
+        $image = !empty($galeri->image) ? true : false;
 
-        if ($request->foto) {
-        if ($foto) {
-            File::delete($galeri->foto);
+        if ($request->image) {
+        if ($image) {
+            File::delete($galeri->image);
         }
 
-        $file = $request->file('foto');
+        $file = $request->file('image');
         $ext_file = $file->getClientOriginalExtension();
 		// $ext_file_pria = $file_pria->getClientOriginalExtension();
  
@@ -124,11 +124,11 @@ class GaleriController extends Controller
 		// $file_pria->move($tujuan_upload,$nama_file_pria);
 
         $galeri->update([
-            'foto' => $nama_file,
+            'image' => $nama_file,
         ]);
     }
     $galeri->update([
-        'keterangan' => $request->keterangan,
+        'description' => $request->description,
     ]);
 
         return redirect()->route('galeri.index');
@@ -164,15 +164,15 @@ class GaleriController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('foto', function($row) {
-                return '<img width="100px" src="/data_file/'. $row->foto . '" alt="">';
+            ->addColumn('image', function($row) {
+                return '<img width="100px" src="/data_file/'. $row->image . '" alt="">';
             })
             ->addColumn('action', function($row) {
                 $editBtn = '<a href="' . route('galeri.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
                 $deleteBtn = '<a href="' . route('galeri.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash">Delete</a>';
                 return $editBtn . $deleteBtn;
             })
-            ->rawColumns(['foto', 'action'])
+            ->rawColumns(['image', 'action'])
             ->make(true);
     }
 }

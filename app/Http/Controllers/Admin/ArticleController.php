@@ -48,7 +48,7 @@ class ArticleController extends Controller
             'status' => 'required'
         ]);
 
-        $isDraft = $request->status == 'Draft' ? 1 : 0;
+        $isDraft = $request->status == 'Save as Draft' ? 1 : 0;
  
         Article::create([
     		'title' => $request->title,
@@ -102,7 +102,7 @@ class ArticleController extends Controller
         ]);
 
         $article = Article::find($id);
-        $isDraft = $request->status == 'Draft' ? 1 : 0;
+        $isDraft = $request->status == 'Save as Draft' ? 1 : 0;
 
         $article->update([
         'title' => $request->title,

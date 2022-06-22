@@ -11,7 +11,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Ubah Foto</h3>
+                  <h3 class="card-title">Edit</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -21,23 +21,23 @@
 
                     <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Foto</label>
+                        <label for="exampleInputPassword1">Image</label>
                         <!-- <img id="image-preview-update" alt="image preview" width="200px"/> -->
-                        <img id="image-preview-update" width="100px" src="/data_file/{{$galeri->foto}}" alt="">
-                        <input value="{{ $galeri->foto ?? old('foto') }}"
-                        type="file" name='foto' class="form-control" id="image-source-update" placeholder=""onchange="previewImageUpdate();"/>
+                        <img id="image-preview-update" width="100px" src="/data_file/{{$galeri->image}}" alt="">
+                        <input value="{{ $galeri->image ?? old('image') }}"
+                        type="file" name='image' class="form-control" id="image-source-update" placeholder=""onchange="previewImageUpdate();"/>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Keterangan</label>
-                      <input value="{{ $galeri->keterangan ?? old('keterangan') }}"
-                      type="text" name='keterangan' class="form-control" id="exampleInputEmail1" placeholder="Keterangan">
+                      <label for="exampleInputEmail1">Description</label>
+                      <input value="{{ $galeri->description ?? old('description') }}"
+                      type="text" name='description' class="form-control" id="exampleInputEmail1" placeholder="Description">
                     </div>
 
                   </div>
                   <!-- /.card-body -->
 
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
               </div>

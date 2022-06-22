@@ -53,7 +53,7 @@
         @endrole
         <li class="nav-item">
           <a href="{{route('galeri.index')}}" class="nav-link {{ $elementActive == 'galeri.index' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-home"></i>
+            <i class="nav-icon fas fa-images"></i>
             <p>
               Galeri
             </p>
@@ -61,7 +61,7 @@
         </li>
         <li class="nav-item">
           <a href="{{route('article.index')}}" class="nav-link {{ $elementActive == 'article.index' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-shapes"></i>
+            <i class="nav-icon fas fa-pencil-alt"></i>
             <p>
               Article
             </p>
