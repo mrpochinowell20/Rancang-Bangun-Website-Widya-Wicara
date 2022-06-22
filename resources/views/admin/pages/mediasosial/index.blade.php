@@ -23,9 +23,9 @@
             </button>
             </div>
             <div class="modal-body">
-                <div class="card card-success">
+                <div class="card card-default color-palette-box">
                     <div class="card-header">
-                      <h3 class="card-title">Create Media</h3>
+                      <label class="card-title">Create Media</label>
                     </div>
                 <form method="POST" action="{{route('mediasosial.store')}}" enctype="multipart/form-data">
                     {{ csrf_field() }}

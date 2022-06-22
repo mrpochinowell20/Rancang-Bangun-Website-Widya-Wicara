@@ -6,16 +6,16 @@
 
 @section('content')
     <!-- Main content -->
-    <section class="content">
-            <!-- left column -->
-            <div class="col-md-12 col-lg-6">
-              <!-- general form elements -->
-              <div class="card card-success">
-                <div class="card-header">
-                  <h3 class="card-title">Update Company</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
+    <div class="col-12 col-md-4">
+        <section class="container-fluid">
+          <div class="card card-default color-palette-box">
+            <div class="card-header">
+              <h3 class="card-title">
+                Edit Data
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="col-12">
                 <form method="POST" action="{{route('company.update',$company->id)}}"enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
