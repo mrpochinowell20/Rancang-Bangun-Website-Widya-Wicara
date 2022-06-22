@@ -8,12 +8,14 @@
     <!-- Main content -->
     <section class="content">
             <!-- left column -->
-            <div class="col-md-12 col-lg-6">
-              <!-- general form elements -->
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Edit Feature</h3>
-                </div>
+            <div class="col-12 col-md-4">
+              <section class="container-fluid">
+                <div class="card card-default color-palette-box">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      Edit Feature
+                    </h3>
+                  </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form method="POST" action="{{route('feature.update',$feature->id)}}"enctype="multipart/form-data">
@@ -33,8 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Descriptions</label>
-                        <input value="{{ $feature->deskriptions ?? old('deskriptions') }}"
-                        type="text" name='deskriptions' class="form-control" id="name" placeholder="Masukkan Deskripsi" >
+                        <textarea  class="form-control" id="nama" name="deskriptions" rows="10" placeholder="Masukan Deskripsi" required>{{ $feature->deskriptions ?? old('deskriptions') }}</textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Icon</label>
@@ -46,7 +47,7 @@
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <input type="hidden" name="solution_id" id="solution_id" value="{{$feature->solution_id}}">
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </form>
               </div>

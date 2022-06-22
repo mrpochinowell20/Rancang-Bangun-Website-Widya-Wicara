@@ -159,7 +159,8 @@ class FeatureController extends Controller
         "deskriptions" => $request->deskriptions,
       
     ]);
-        return redirect()->route('feature.index');
+        // return redirect()->route('feature.index');
+        return redirect()->route('solution.detail',  $feature->solution_id);
     }
 
     /**
