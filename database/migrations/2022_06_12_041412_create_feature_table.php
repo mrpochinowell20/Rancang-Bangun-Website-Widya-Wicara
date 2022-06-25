@@ -16,7 +16,7 @@ class CreateFeatureTable extends Migration
     {
         Schema::create('feature', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30);
+            $table->string('nama', 30);
             $table->text('subtitle');
             $table->text('deskriptions');
             $table->text('icon');
