@@ -1,27 +1,26 @@
 @extends('admin.layouts.app', [
-  'elementActive' => 'user'
+  'elementActive' => 'company'
 ])
 
-@section('title', 'Data User');
+@section('title', 'Data Company');
 
 @section('content')
 <div>
   <div class = "row">
     <div class = "col-md-12">
-      <h1>User<h1>
+      <h1>Data Company<h1>
     </div>
     <div class="col-md-12">
       <div class="container-fluid bg-white p-4">
-        <div class="mb-4">
-          <a href="{{route('user.create')}}" class="btn btn-md btn-primary">Tambah data User</a>
-        </div>
+        {{-- <div class="mb-4">
+          <a href="{{route('company.create')}}" class="btn btn-md btn-primary">Tambah data Company</a>
+        </div> --}}
         <table class="table table-bordered data-table-user">
           <thead>
               <tr>
-                <th>Username</th>
-                <th>Nama</th>
-                <th>Level</th>
-                <th>Aksi</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Action</th>
               </tr>
           </thead>
           <tbody>
@@ -39,11 +38,10 @@
         processing: true,
         serverSide: true,
         responsive: true,
-        ajax: "{{ route('user.index') }}",
+        ajax: "{{ route('company.index') }}",
         columns: [
-          {data: 'username', name: 'username'},
-          {data: 'name', name: 'name'},
-          {data: 'level', name: 'level'},
+          {data: 'nama', name: 'nama'},
+          {data: 'content', name: 'content'},
           {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
@@ -70,13 +68,13 @@
                 }
             });
           $.ajax({
-            url: "/admin/mediasosial/"+id,
+            url: "/pages/index/"+id,
             method: 'DELETE',
             success: function(res){
               Swal.fire(
-                'Dezssssxzleted!',
+                'Deleted!',
                 'Data berhasil dihapus.',
-                'success'
+                'success',
               )
               setTimeout(function(){
                 $('.data-table-user').DataTable().ajax.reload();
@@ -86,7 +84,7 @@
               Swal.fire(
                 'Error!',
                 'Data gagal dihapus.',
-                'error'
+                'error',
               )
             }
           });
