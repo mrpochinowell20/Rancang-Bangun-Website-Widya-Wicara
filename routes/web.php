@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('getPartner', [PartnerController::class, 'getPartner'])->name('partner.list');
         Route::delete('/partner/{id}/delete', [PartnerController::class, 'destroy']);
         Route::resource('testimonial', TestimonialController::class);
+        Route::get('testimonial/edit/{id}', [TestimonialController::class, 'edit']);
         Route::get('getTestimonial', [TestimonialController::class, 'getTestimonial'])->name('testimonial.list');
         Route::delete('/testimonial/{id}/delete', [TestimonialController::class, 'destroy']);
     });

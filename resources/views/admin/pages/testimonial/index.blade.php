@@ -12,7 +12,7 @@
   </div>
   <div class="col-md-12">
     <div class="container-fluid bg-white p-4">
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTambahTestimoni">Create Testimonial</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahTestimoni">Create Testimonial</button>
     <div class="container-fluid bf-white p-4">
 
       <div class="mb-4">
@@ -31,27 +31,27 @@
                 <form method="POST" action="{{route('testimonial.store')}}"enctype="multipart/form-data">
                   {{ csrf_field() }}
                   <div class="form-group">
-                    <label for="nama">Foto</label>
-                    <input type="file" name='image' class="form-control" id="image" placeholder="Masukkan Foto">
+                    <label for="nama">Image</label>
+                    <input type="file" name='image' class="form-control" id="image">
                   </div>
                   <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama" required>
+                    <label for="nama">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Insert Name" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Pekerjaan</label>
-                    <input type="text" class="form-control" id="job" name="job" placeholder="Masukan Pekerjaan" required>
+                    <label for="nama">Job</label>
+                    <input type="text" class="form-control" id="job" name="job" placeholder="Job" required>
                     <small class="text-danger">{{ $errors->first('name') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Testimoni</label>
+                    <label for="nama">Testimonial</label>
                     <textarea name="testimonial" id="testimonial" class="form-control" cols="30" rows="10"></textarea>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
-                    <label for="nama">Tanggal</label>
-                    <input type="date" class="date form-control" id="date" name="date" placeholder="Masukan Tanggal" required>
+                    <label for="nama">Date</label>
+                    <input type="date" class="date form-control" id="date" name="date" placeholder="The Date" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <button type="submit" class="btn btn-success mt-4">Submit</button>
@@ -62,48 +62,24 @@
         </div>
 
         {{-- Modal Edit --}}
-        <div class="modal fade" id="modalEditTestimoni" tabindex="-1" aria-labelledby="modalEditTestimoni" aria-hidden="true">
+        {{-- <div class="modal fade" id="modalEditTestimoni" tabindex="-1" aria-labelledby="modalEditTestimoni" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
+
               <div class="modal-header">
-                <h5 class="modal-title">Create Testimonial</h5>
+                <h5 id="modal-title" class="modal-title">Create Testimonial</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               <div class="modal-body">
-                <form method="POST" action="{{route('testimonial.store')}}"enctype="multipart/form-data">
-                  {{ csrf_field() }}
-                  <div class="form-group">
-                    <label for="nama">Foto</label>
-                    <input type="file" name='image' class="form-control" id="image" placeholder="Masukkan Foto">
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama" required>
-                    <small class="text-danger">{{ $errors->first('nama') }}</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Pekerjaan</label>
-                    <input type="text" class="form-control" id="job" name="job" placeholder="Masukan Pekerjaan" required>
-                    <small class="text-danger">{{ $errors->first('name') }}</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Testimoni</label>
-                    <textarea name="testimonial" id="testimonial" class="form-control" cols="30" rows="10"></textarea>
-                    <small class="text-danger">{{ $errors->first('nama') }}</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Tanggal</label>
-                    <input type="hidden" class="date form-control" id="date" name="date" placeholder="Masukan Tanggal" required>
-                    <small class="text-danger">{{ $errors->first('nama') }}</small>
-                  </div>
-                  <button type="submit" class="btn btn-success mt-4">Submit</button>
-                </form>
+                <div id="page" class="p-2"></div>
               </div>
+
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
 
@@ -112,12 +88,12 @@
         <table class="table table-bordered yajra-datatable">
           <thead>
               <tr>
-                  <th>Foto</th>
-                  <th>Nama</th>
-                  <th>Pekerjaan</th>
-                  <th>Testimoni</th>
-                  <th>Tanggal</th>
-                  <th>Aksi</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Job</th>
+                  <th>Testimonial</th>
+                  <th>Date</th>
+                  <th>Action</th>
               </tr>
           </thead>
           <tbody>
@@ -142,7 +118,9 @@
         @csrf
       </form>
       
+    {{-- Menampilkan Datatables --}}
      <script>
+
         $(function() {
             var table = $('.yajra-datatable').DataTable({
                 processing: true,
@@ -152,7 +130,7 @@
                 columns: [
                 {data: 'image', name: 'image', 
                 render: function( data, type, full, meta ) {
-                        return "<img src=\"/assets/img/" + data + "\" height=\"50\"/>";
+                        return "<img src=\"/data_file/" + data + "\" height=\"50\"/>";
                     },
                 orderable:true},
                 {data: 'name', name: 'name'},
@@ -168,6 +146,16 @@
                 ]
             });
         });
+
+        // Untuk modal halaman edit show
+        function show(id) {
+            $.get("{{ url('testimonial/edit') }}/" + id, {}, function(data, status) {
+                $("#modal-title").html('Edit Testimonial')
+                $("#page").html(data);
+                $("#modalEditTestimoni").modal('show');
+            });
+        }
+
     </script>
 
     <script type="text/javascript">

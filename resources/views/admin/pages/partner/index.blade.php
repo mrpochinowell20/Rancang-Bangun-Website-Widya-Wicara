@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-12">
         <div class="container-fluid bg-white p-4">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCreate">Create Partner</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate">Create Partner</button>
         <div class="container-fluid bd-white p-4">
             <div class="mb-4">
 
@@ -29,15 +29,15 @@
                                 <form method="post" action="{{route('partner.store')}}"enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
+                                        <label>Name</label>
+                                        <input type="text" name="nama" class="form-control" placeholder="Insert Name">
                                     </div>
                                     <div class="form-group">
-                                        <label>Logo</label>
-                                        <input type="file" name="logo" class="form-control" placeholder="">
+                                        <label>Icon</label>
+                                        <input type="file" name="logo" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-success" value="Simpan">
+                                        <input type="submit" class="btn btn-success" value="Submit">
                                     </div>
                                 </form>
                             </div>
@@ -47,7 +47,7 @@
                 </div>
 
                 {{-- Modal Edit--}}
-                <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
+                {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
 
@@ -65,12 +65,12 @@
                 
                                   <div class="card-body">
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Nama</label>
+                                      <label for="exampleInputEmail1">Name</label>
                                       <input value=""
                                       type="text" name='nama' id="nama" class="form-control" placeholder="Masukkan Nama">
                                     </div>
                                   <div class="form-group">
-                                        <label for="exampleInputPassword1">Logo</label>
+                                        <label for="exampleInputPassword1">Icon</label>
                                         <img id="image-preview-update" width="100px" src="#" alt="">
                                         <input value=""
                                         type="file" name='logo' id="logo" class="form-control" placeholder=""onchange="previewImageUpdate();"/>
@@ -80,14 +80,14 @@
                                   <!-- /.card-body -->
                 
                                   <div class="card-footer">
-                                    <button type="submit" id="submit" class="btn btn-primary">Save Change</button>
+                                    <button type="submit" id="submit" class="btn btn-success">Submit</button>
                                   </div>
                                 </form>
                             </div>
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
@@ -96,9 +96,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Logo</th>
-                            <th>Aksi</th>
+                            <th>Name</th>
+                            <th>Icon</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

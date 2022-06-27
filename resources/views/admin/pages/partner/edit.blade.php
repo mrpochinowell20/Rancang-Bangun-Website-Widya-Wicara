@@ -13,7 +13,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Ubah Partner</h3>
+                  <h3 class="card-title">Change Partner</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -23,23 +23,21 @@
 
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
-                      <input value="{{ $partner->nama ?? old('nama') }}"
-                      type="text" name='nama' class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama">
+                      <label for="exampleInputEmail1">Name</label>
+                      <input value="{{ $partner->nama ?? old('nama') }}" type="text" name='nama' class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama" required>
                     </div>
                   <div class="form-group">
-                        <label for="exampleInputPassword1">Logo</label>
+                        <label for="exampleInputPassword1">Icon</label>
                         <!-- <img id="image-preview-update" alt="image preview" width="200px"/> -->
                         <img id="image-preview-update" width="100px" src="/data_file/{{$partner->logo}}" alt="">
-                        <input value="{{ $partner->logo ?? old('logo') }}"
-                        type="file" name='logo' class="form-control" id="image-source-update" placeholder=""onchange="previewImageUpdate();"/>
+                        <input value="{{ $partner->logo ?? old('logo') }}" type="file" name='logo' class="form-control" id="image-source-update" placeholder=""onchange="previewImageUpdate();" required/>
                       </div>
 
                   </div>
                   <!-- /.card-body -->
 
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-success">Save Changes</button>
                   </div>
                 </form>
               </div>

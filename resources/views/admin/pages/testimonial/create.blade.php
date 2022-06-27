@@ -19,7 +19,7 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="nama">Foto</label>
-                <input type="file" name='image' class="form-control" id="nama" placeholder="Masukkan Foto">
+                <input type="file" name='image' class="form-control" id="nama" placeholder="Masukkan Foto" required>
               </div>
             <div class="form-group">
               <label for="nama">Nama</label>

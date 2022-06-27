@@ -168,8 +168,8 @@ class PartnerController extends Controller
                 return '<img width="100px" src="/data_file/'. $row->logo . '" alt="">';
             })
             ->addColumn('action', function($row) {
-                $editBtn = '<a data-toggle="modal" id="editForm" data-target="#modalEdit" data-id="{{ $partner->id }} href="' . route('partner.edit', $row) . '" class="btn btn-md btn-info edit"><i class="far fa-edit"></i> Edit</a>';
-                $deleteBtn = '<a href="' . route('partner.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"> Delete</a>';
+                $editBtn = '<a href="' . route('partner.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
+                $deleteBtn = '<a href="' . route('partner.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete</a>';
                 return $editBtn . $deleteBtn;
             })
             ->rawColumns(['logo', 'action'])
