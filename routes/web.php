@@ -22,7 +22,10 @@ use SebastianBergmann\CodeCoverage\Node\CrapIndex;
 |
 */
 
-Route::get('/', [UserDashboardController::class, 'index']);
+// Route::get('/', [UserDashboardController::class, 'index']);
+Route::get('/', function () {
+    return view('client.pages.index');
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
