@@ -27,8 +27,9 @@
                       type="text" name='nama' class="form-control" id="name" placeholder="Masukkan Nama" >
                     </div>
                     <div class="form-group">
-                        <label>Content</label>
-                          <textarea class="form-control" id="summernote" name="content" rows="10"></textarea>
+                        <label for="exampleInputPassword1">Content</label>
+                        <textarea  class="form-control" id="nama" name="content" rows="10" placeholder="Masukan Content" required>{{ $company->content ?? old('content') }}</textarea>
+
                       </div>
                   </div>
                   <!-- /.card-body -->
