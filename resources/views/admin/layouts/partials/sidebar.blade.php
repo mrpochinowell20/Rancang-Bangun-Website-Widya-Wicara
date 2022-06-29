@@ -40,32 +40,18 @@
           </a>
         </li>
         <li class="nav-item">
-<<<<<<< HEAD
-            <a href="{{route('partner.index')}}" class="nav-link {{ $elementActive == 'partner.index' ? 'active' : '' }}">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Partner
-=======
             <a href="{{route('mediasosial.index')}}" class="nav-link {{ $elementActive == 'mediasosial' ? 'active' : '' }}">
               <i class="nav-icon fas fa-mail-bulk"></i>
               <p>
                 Data Media Sosial
->>>>>>> 388432a1763e625674b434b658a551ac3fdec1b0
               </p>
             </a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
-            <a href="{{route('testimonial.index')}}" class="nav-link {{ $elementActive == 'testimonial.index' ? 'active' : '' }}">
-              <i class="nav-icon fas fa-comment"></i>
-              <p>
-                Testimonial
-=======
             <a href="{{route('company.index')}}" class="nav-link {{ $elementActive == 'company' ? 'active' : '' }}">
               <i class="nav-icon far fa-building"></i>
               <p>
                 Data Company
->>>>>>> 388432a1763e625674b434b658a551ac3fdec1b0
               </p>
             </a>
           </li>
