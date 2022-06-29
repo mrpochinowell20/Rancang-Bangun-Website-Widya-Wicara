@@ -1,5 +1,5 @@
 @extends('admin.layouts.app', [
-  'elementActive' => 'user'
+  'elementActive' => 'create'
 ])
 
 @section('title', 'Tambah | Data User');
@@ -44,5 +44,5 @@
       </div>
     </div>
   </section>
-</div> 
+</div>
 @endsection

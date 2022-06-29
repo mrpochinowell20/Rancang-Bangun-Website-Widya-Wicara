@@ -18,6 +18,7 @@ class CreateCompanyTable extends Migration
             $table->text("nama");
             $table->text("content");
             $table->timestamps();
+
         });
     }
 

@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\MedsosController;
 use App\Http\Controllers\Admin\UserContoller;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Node\CrapIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.pages.index');
-});
+Route::get('/', [UserDashboardController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');

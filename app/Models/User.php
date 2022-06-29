@@ -18,12 +18,5 @@ class User extends Authenticatable
         return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'username', 'name', 'level', 'password',
-    ];
+    protected $guarded = ['id'];
 }
