@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{route('solutions')}}" class="nav-link {{ $elementActive == 'solution' ? 'active' : '' }}">
+          <a href="{{route('solution.index')}}" class="nav-link {{ $elementActive == 'solution' ? 'active' : '' }}">
             <i class="nav-icon fas fa-shapes"></i>
             <p>
               Solutions
