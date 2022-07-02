@@ -39,14 +39,22 @@
             </p>
           </a>
         </li>
-        {{-- <li class="nav-item">
-          <a href="{{route('feature.index')}}" class="nav-link {{ $elementActive == 'feature' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-paw"></i>
-            <p>
-              Feature
-            </p>
-          </a>
-        </li> --}}
+        <li class="nav-item">
+            <a href="{{route('mediasosial.index')}}" class="nav-link {{ $elementActive == 'mediasosial' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-mail-bulk"></i>
+              <p>
+                Data Media Sosial
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('company.index')}}" class="nav-link {{ $elementActive == 'company' ? 'active' : '' }}">
+              <i class="nav-icon far fa-building"></i>
+              <p>
+                Data Company
+              </p>
+            </a>
+          </li>
         @role('super_admin')
         {{-- User --}}
         <li class="nav-item">

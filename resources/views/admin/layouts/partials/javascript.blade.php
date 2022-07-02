@@ -28,6 +28,7 @@
 <script src="{{ asset('vendor/adminlte') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 {{-- Datatables --}}
 <script src="{{ asset('vendor/adminlte') }}/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="{{ asset('vendor/adminlte') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

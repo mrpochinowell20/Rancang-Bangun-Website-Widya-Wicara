@@ -14,4 +14,8 @@ yarn-error.log
 /.idea
 /.vscode
 /public/uploads
+<<<<<<< HEAD
 /public/data_file
+=======
+/public/data_file
+>>>>>>> project-lalaayu

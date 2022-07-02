@@ -27,5 +27,6 @@ class UserSeeder extends Seeder
         $user->level = "super_admin";
         $user->password = bcrypt('12345');
         $user->save();
+
     }
 }
