@@ -30,7 +30,7 @@ class CompanyController extends Controller
                     ->addIndexColumn()
                     ->make(true);
         }
-        return view('admin.pages.Company.index');
+        return view('admin.pages.company.index');
     }
 
     /**
@@ -59,23 +59,22 @@ class CompanyController extends Controller
         ]);
         // $file = $request->file('icon');
         // $ext_file = $file->getClientOriginalExtension();
-		// $ext_file_pria = $file_pria->getClientOriginalExtension();
+        // $ext_file_pria = $file_pria->getClientOriginalExtension();
 
-		// $nama_file = time()."_".$file->getClientOriginalName().".".$ext_file;
-		// $nama_file_pria = time()."_".$file_pria->getClientOriginalName().".".$ext_file_pria;
+        // $nama_file = time()."_".$file->getClientOriginalName().".".$ext_file;
+        // $nama_file_pria = time()."_".$file_pria->getClientOriginalName().".".$ext_file_pria;
 
 
-      	// isi dengan nama folder tempat kemana file diupload
-		// $tujuan_story = 'data_file';
-		// $file->move($tujuan_story,$nama_file);
-		// $file_pria->move($tujuan_upload,$nama_file_pria);
+        // isi dengan nama folder tempat kemana file diupload
+        // $tujuan_story = 'data_file';
+        // $file->move($tujuan_story,$nama_file);
+        // $file_pria->move($tujuan_upload,$nama_file_pria);
 
         Companyy::create([
-    		'nama' => $request->nama,
+            'nama' => $request->nama,
             'content' => $request->content,
-    	]);
+        ]);
         return redirect()->route('company.index');
-
     }
 
     /**
@@ -100,7 +99,7 @@ class CompanyController extends Controller
     {
         $data = [
             'company' => Companyy::find($id)];
-        return view('admin.pages.company.detail',$data);
+        return view('admin.pages.company.detail', $data);
     }
 
 
@@ -108,7 +107,7 @@ class CompanyController extends Controller
     {
         // dd($request->ajax());
         $company = Companyy::find($id);
-        return view('admin.pages.company.edit',['company'=>$company]);
+        return view('admin.pages.company.edit', ['company'=>$company]);
     }
 
     /**
@@ -151,7 +150,8 @@ class CompanyController extends Controller
         return redirect()->route('company.index');
     }
 
-    public function getCompanyDetail(Request $request) {
+    public function getCompanyDetail(Request $request)
+    {
         if ($request->ajax()) {
             $data = Companyy::get();
             return DataTables::of($data)
@@ -166,5 +166,4 @@ class CompanyController extends Controller
             ->make(true);
         }
     }
-
 }
