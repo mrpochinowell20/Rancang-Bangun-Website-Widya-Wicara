@@ -13,9 +13,13 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+<<<<<<< HEAD
 /public/uploads
 <<<<<<< HEAD
 /public/data_file
 =======
 /public/data_file
 >>>>>>> project-lalaayu
+=======
+/public/data_file
+>>>>>>> project-rika

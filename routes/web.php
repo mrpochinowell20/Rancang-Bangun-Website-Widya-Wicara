@@ -3,10 +3,15 @@
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SolutionController;
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\MedsosController;
+=======
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\TestimonialController;
+>>>>>>> project-rika
 use App\Http\Controllers\Admin\UserContoller;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -25,10 +30,14 @@ use SebastianBergmann\CodeCoverage\Node\CrapIndex;
 |
 */
 
+<<<<<<< HEAD
 // Route::get('/', [UserDashboardController::class, 'index']);
 Route::get('/', function () {
     return view('client.pages.index');
 });
+=======
+Route::get('/', [UserDashboardController::class, 'index']);
+>>>>>>> project-rika
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
@@ -37,6 +46,7 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::group(['middleware' => ['auth']], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+<<<<<<< HEAD
         Route::get('/solution', [SolutionController::class, 'create'])->name('solution');
         Route::get('/solution', [SolutionController::class, 'store'])->name('solution');
         Route::resource('solution', SolutionController::class);
@@ -69,6 +79,16 @@ Route::group(['middleware' => ['auth']], function () {
         // Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
         Route::get('/company/detail/{id}', [CompanyController::class, 'detail'])->name('company.detail');
         Route::get('/company/detail/{id}/list', [CompanyController::class, 'getCompanyDetail'])->name('company.detail.list');
+=======
+        Route::get('/solutions', [SolutionController::class, 'index'])->name('solutions');
+        Route::resource('partner', PartnerController::class);
+        Route::get('getPartner', [PartnerController::class, 'getPartner'])->name('partner.list');
+        Route::delete('/partner/{id}/delete', [PartnerController::class, 'destroy']);
+        Route::resource('testimonial', TestimonialController::class);
+        Route::get('testimonial/edit/{id}', [TestimonialController::class, 'edit']);
+        Route::get('getTestimonial', [TestimonialController::class, 'getTestimonial'])->name('testimonial.list');
+        Route::delete('/testimonial/{id}/delete', [TestimonialController::class, 'destroy']);
+>>>>>>> project-rika
     });
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
