@@ -12,41 +12,51 @@
       </div>
       <div class="card-body">
         <div class="col-12">
-        <form method="post" action="{{route('article.store')}}"enctype="multipart/form-data">
- 
-            {{ csrf_field() }}
+          <form method="post" action="{{route('article.store')}}"enctype="multipart/form-data">
+  
+              {{ csrf_field() }}
 
-    <div class="form-group">
-      <label>Title</label>
-      <input type="text" id="title" name="title" class="form-control" placeholder="">
-    </div>
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" id="title" name="title" class="form-control" placeholder="">
+            </div>
 
-    <div class="form-group">
-      <label>Slug</label>
-      <input type="text" id="slug" name="slug" class="form-control" placeholder="">
-    </div>
+            <div class="form-group">
+              <label>Slug</label>
+              <input type="text" id="slug" name="slug" class="form-control" placeholder="">
+            </div>
 
-    <div class="form-group">
-      <label for="category">Category <code></code></label>
-      <select class="custom-select form-control-border" id="category" name="category">
-      <option>Acara</option>
-      <option>Fitur</option>
-      <option>Informasi</option>
-      <option>Promo</option>
-      </select>
-    </div>
+            <div class="form-group">
+              <label for="category">Category <code></code></label>
+              <select class="custom-select form-control-border" id="category" name="category">
+              <option>Acara</option>
+              <option>Fitur</option>
+              <option>Informasi</option>
+              <option>Promo</option>
+              </select>
+            </div>
 
-    <div class="form-group">
-      <label>Content</label>
-        <textarea class="form-control" id="summernote" name="content" rows="3" placeholder="Enter ..."></textarea>
-    </div>
+            <div class="form-group">
+              <label>Banner</label>
+              <input type="file" id="banner" name="banner" class="form-control" placeholder="">
+            </div>
 
-    <div class="form-group">
-      <input type="submit" name="status" class="btn btn-success" value="Publish">
-      <input type="submit" name="status" class="btn btn-md btn-primary" value="Save as Draft">
+            <div class="form-group">
+              <label>Content</label>
+                <textarea class="form-control" id="summernote" name="content" rows="3" placeholder="Enter ..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" name="status" class="btn btn-success" value="Publish">
+              <input type="submit" name="status" class="btn btn-md btn-primary" value="Save as Draft">
+            </div>
+  
+          </form>   
+        </div>
+      </div>
     </div>
- 
-    </form>   
+  </section>
+</div>
 @endsection
 
 @section('javascript')

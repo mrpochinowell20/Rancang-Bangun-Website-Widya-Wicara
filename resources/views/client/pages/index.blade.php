@@ -56,7 +56,33 @@
   </section><!-- End Hero -->
 
   <main id="main">
+    <section class="article">
+      <div class="container" data-aos="fade-up">
 
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="section-title">
+            <h2>Artikel</h2>
+          </div>
+          <a href="/article">Lihat lainnya..</a>
+        </div>
+
+        <div class="row">
+
+          @isset($articles)    
+            @foreach ($articles as $article)
+              <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
+                <x-card-article 
+                  banner="{{$article->banner}}"
+                  title="{{$article->title}}"
+                  slug="{{$article->slug}}"
+                  category="{{$article->category}}"
+                ></x-card-article>
+              </div>
+            @endforeach
+          @endisset
+        </div>
+      </div>
+    </section>
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
@@ -211,35 +237,18 @@
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
-
-            @forelse ($testimonis as $testimoni)
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <img src="/assets/img/{{ $testimoni->image }}" style="width: 50%; height:50%" data-holder-rendered="true">
-                    <p>
-                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                      {{ $testimoni->testimonial }}
-                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                    </p>
-                    <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                    <h3>{{ $testimoni->name }}</h3>
-                    <h4>{{ $testimoni->job }}</h4>
-                  </div>
-                </div>
-            @empty
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <p>
-                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                      Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                    </p>
-                    <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                    <h3>Saul Goodman</h3>
-                    <h4>Ceo &amp; Founder</h4>
-                  </div>
-                </div>
-            @endforelse
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+              </div>
+            </div>
 
           </div>
           <div class="swiper-pagination"></div>

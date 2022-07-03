@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -18,7 +19,7 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.galeri.index',['galeri'=>Galeri::all()]);
+        return view('admin.pages.galeri.index', ['galeri'=>Galeri::all()]);
     }
 
     /**
@@ -45,23 +46,22 @@ class GaleriController extends Controller
         ]);
         $file = $request->file('image');
         $ext_file = $file->getClientOriginalExtension();
-		// $ext_file_pria = $file_pria->getClientOriginalExtension();
+        // $ext_file_pria = $file_pria->getClientOriginalExtension();
  
-		$nama_file = time()."_".$file->getClientOriginalName().".".$ext_file;
-		// $nama_file_pria = time()."_".$file_pria->getClientOriginalName().".".$ext_file_pria;
+        $nama_file = time()."_".$file->getClientOriginalName().".".$ext_file;
+        // $nama_file_pria = time()."_".$file_pria->getClientOriginalName().".".$ext_file_pria;
 
  
-      	// isi dengan nama folder tempat kemana file diupload
-		$tujuan_story = 'data_file';
-		$file->move($tujuan_story,$nama_file);
-		// $file_pria->move($tujuan_upload,$nama_file_pria);
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_story = 'data_file';
+        $file->move($tujuan_story, $nama_file);
+        // $file_pria->move($tujuan_upload,$nama_file_pria);
  
         Galeri::create([
-    		'image' => $nama_file,
-    		'description' => $request->description,   
-    	]);
+            'image' => $nama_file,
+            'description' => $request->description,
+        ]);
         return redirect()->route('galeri.index');
-
     }
 
     /**
@@ -84,7 +84,7 @@ class GaleriController extends Controller
     public function edit($id)
     {
         $galeri=Galeri::find($id);
-        return view('admin.pages.galeri.edit',['galeri'=>$galeri]);
+        return view('admin.pages.galeri.edit', ['galeri'=>$galeri]);
     }
 
     /**
@@ -106,30 +106,30 @@ class GaleriController extends Controller
         $image = !empty($galeri->image) ? true : false;
 
         if ($request->image) {
-        if ($image) {
-            File::delete($galeri->image);
+            if ($image) {
+                File::delete($galeri->image);
+            }
+
+            $file = $request->file('image');
+            $ext_file = $file->getClientOriginalExtension();
+            // $ext_file_pria = $file_pria->getClientOriginalExtension();
+    
+            $nama_file = time()."_".$file->getClientOriginalName().".".$ext_file;
+            // $nama_file_pria = time()."_".$file_pria->getClientOriginalName().".".$ext_file_pria;
+
+    
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_story = 'data_file';
+            $file->move($tujuan_story, $nama_file);
+            // $file_pria->move($tujuan_upload,$nama_file_pria);
+
+            $galeri->update([
+                'image' => $nama_file,
+            ]);
         }
-
-        $file = $request->file('image');
-        $ext_file = $file->getClientOriginalExtension();
-		// $ext_file_pria = $file_pria->getClientOriginalExtension();
- 
-		$nama_file = time()."_".$file->getClientOriginalName().".".$ext_file;
-		// $nama_file_pria = time()."_".$file_pria->getClientOriginalName().".".$ext_file_pria;
-
- 
-      	// isi dengan nama folder tempat kemana file diupload
-		$tujuan_story = 'data_file';
-		$file->move($tujuan_story,$nama_file);
-		// $file_pria->move($tujuan_upload,$nama_file_pria);
-
         $galeri->update([
-            'image' => $nama_file,
+            'description' => $request->description,
         ]);
-    }
-    $galeri->update([
-        'description' => $request->description,
-    ]);
 
         return redirect()->route('galeri.index');
     }
@@ -155,7 +155,8 @@ class GaleriController extends Controller
         return redirect()->route('galeri.index');
     }
 
-    public function getGaleri(Request $request) {
+    public function getGaleri(Request $request)
+    {
         if (!$request->ajax()) {
             return '';
         }
@@ -164,10 +165,10 @@ class GaleriController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('image', function($row) {
+            ->addColumn('image', function ($row) {
                 return '<img width="100px" src="/data_file/'. $row->image . '" alt="">';
             })
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 $editBtn = '<a href="' . route('galeri.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
                 $deleteBtn = '<a href="' . route('galeri.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash">Delete</a>';
                 return $editBtn . $deleteBtn;

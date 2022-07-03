@@ -12,14 +12,14 @@ class Article extends Model
     use Sluggable;
 
     protected $table = 'article';
-    protected $fillable = ['title', 'slug', 'category', 'content', 'status', 'is_draft'];
+    protected $fillable = ['title', 'slug', 'category', 'content', 'status', 'is_draft', 'banner'];
 
     public function sluggable(): array
     {
         return [
             'slug' => [
                 'source' => 'title'
-            ]  
+            ]
         ];
     }
 }

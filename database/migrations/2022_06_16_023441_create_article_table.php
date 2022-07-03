@@ -10,7 +10,7 @@ class CreateArticleTable extends Migration
      * Run the migrations.
      *
      * @return void
-     * 
+     *
      */
     public function up()
     {
@@ -18,6 +18,7 @@ class CreateArticleTable extends Migration
             $table->bigIncrements('id');
             $table->text('title');
             $table->text('slug');
+            $table->string('banner');
             $table->text('category');
             $table->text('content');
             $table->boolean('is_draft');

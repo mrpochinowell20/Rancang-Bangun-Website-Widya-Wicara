@@ -40,6 +40,20 @@
     </div>
 
     <div class="form-group">
+      <label>Banner</label>
+      <img id="image-preview-update" width="100px" src="/data_file/{{$article->banner}}" alt="">
+      <input 
+        type="file" 
+        id="image-source-update" 
+        name="banner" 
+        class="form-control" 
+        placeholder=""
+        value="{{ $galeri->banner ?? old('image') }}"
+        onchange="previewImageUpdate();"
+      >
+    </div>
+
+    <div class="form-group">
       <label>Content</label>
         <textarea class="form-control" id="summernote" name="content" rows="3" placeholder="Enter ...">
             {!! $article->content !!}
@@ -55,8 +69,8 @@
 @endsection
 
 @section('javascript')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
   <script>
       $(document).ready(function() {
@@ -70,4 +84,15 @@
         });
       })
   </script>   
+  <script>
+    function previewImageUpdate() {
+      document.getElementById("image-preview-update").style.display = "block";
+      var oFReader = new FileReader();
+      oFReader.readAsDataURL(document.getElementById("image-source-update").files[0]);
+
+      oFReader.onload = function(oFREvent) {
+        document.getElementById("image-preview-update").src = oFREvent.target.result;
+      };
+    };
+  </script>
 @endsection

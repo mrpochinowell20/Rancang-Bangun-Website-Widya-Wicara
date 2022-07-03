@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -19,7 +20,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.article.index',['article'=>Article::all()]);
+        return view('admin.pages.article.index', ['article'=>Article::all()]);
     }
 
     /**
@@ -45,20 +46,25 @@ class ArticleController extends Controller
             'slug' => 'required',
             'category' => 'required',
             'content' => 'required',
+            'banner' => 'required',
             'status' => 'required'
         ]);
+        $file = $request->file('banner');
+        $nama_file = time()."_".$file->getClientOriginalName();
+        $tujuan_story = 'data_file';
+        $file->move($tujuan_story, $nama_file);
 
         $isDraft = $request->status == 'Save as Draft' ? 1 : 0;
  
         Article::create([
-    		'title' => $request->title,
+            'banner' => $nama_file,
+            'title' => $request->title,
             'slug' => $request->slug,
             'category' => $request->category,
             'content' => $request->content,
-            'is_draft' => $isDraft 
-    	]);
+            'is_draft' => $isDraft
+        ]);
         return redirect()->route('article.index');
-
     }
 
     /**
@@ -81,7 +87,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article=Article::find($id);
-        return view('admin.pages.article.edit',['article'=>$article]);
+        return view('admin.pages.article.edit', ['article'=>$article]);
     }
 
     /**
@@ -104,13 +110,29 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $isDraft = $request->status == 'Save as Draft' ? 1 : 0;
 
+        $image = !empty($article->banner) ? true : false;
+        if ($request->banner) {
+            $tujuan_story = 'data_file';
+            if ($image) {
+                File::delete($tujuan_story . '/' . $article->banner);
+            }
+
+            $file = $request->file('banner');
+            $nama_file = time()."_".$file->getClientOriginalName();
+            $file->move($tujuan_story, $nama_file);
+
+            $article->update([
+                'banner' => $nama_file,
+            ]);
+        }
+
         $article->update([
-        'title' => $request->title,
-        'slug' => $request->slug,
-        'category' => $request->category,
-        'content' => $request->content,
-        'is_draft' => $isDraft 
-    ]);
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'category' => $request->category,
+            'content' => $request->content,
+            'is_draft' => $isDraft
+        ]);
 
         return redirect()->route('article.index');
     }
@@ -136,7 +158,8 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
-    public function getArticle(Request $request) {
+    public function getArticle(Request $request)
+    {
         if (!$request->ajax()) {
             return '';
         }
@@ -145,7 +168,7 @@ class ArticleController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 $editBtn = '<a href="' . route('article.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
                 $deleteBtn = '<a href="' . route('article.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash">Delete</a>';
                 return $editBtn . $deleteBtn;
@@ -154,7 +177,8 @@ class ArticleController extends Controller
             ->make(true);
     }
 
-    public function getArticlePublish(Request $request) {
+    public function getArticlePublish(Request $request)
+    {
         if (!$request->ajax()) {
             return '';
         }
@@ -163,7 +187,7 @@ class ArticleController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 $editBtn = '<a href="' . route('article.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
                 $deleteBtn = '<a href="' . route('article.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash">Delete</a>';
                 return $editBtn . $deleteBtn;
@@ -172,7 +196,8 @@ class ArticleController extends Controller
             ->make(true);
     }
 
-    public function getArticleDraft(Request $request) {
+    public function getArticleDraft(Request $request)
+    {
         if (!$request->ajax()) {
             return '';
         }
@@ -181,7 +206,7 @@ class ArticleController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 $editBtn = '<a href="' . route('article.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
                 $deleteBtn = '<a href="' . route('article.destroy', $row) . '/delete" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash">Delete</a>';
                 return $editBtn . $deleteBtn;
@@ -196,4 +221,3 @@ class ArticleController extends Controller
         return response()->json(['slug' => $slug]);
     }
 }
-

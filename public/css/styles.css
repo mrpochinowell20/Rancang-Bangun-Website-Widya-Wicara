@@ -1,0 +1,10 @@
+.article__label {
+  position: absolute;
+  top: 0; 
+  left:0;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  font-weight: 600 !important;
+  padding: 0.5rem;
+  padding-right: 0.875rem;
+}

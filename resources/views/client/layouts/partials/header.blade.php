@@ -24,9 +24,11 @@
   <link href="{{ asset('vendor/onepage') }}/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="{{ asset('vendor/onepage') }}/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="{{ asset('vendor/onepage') }}/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('vendor/onepage') }}/css/style.css" rel="stylesheet">
+  <link href="{{ asset('css') }}/styles.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: OnePage - v4.7.0
