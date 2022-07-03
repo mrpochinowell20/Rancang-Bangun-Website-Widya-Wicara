@@ -30,11 +30,11 @@
                                     @csrf
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
+                                        <input type="text" name="nama" class="form-control" placeholder="Insert Name">
                                     </div>
                                     <div class="form-group">
                                         <label>Icon</label>
-                                        <input type="file" name="logo" class="form-control" placeholder="">
+                                        <input type="file" name="logo" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-success" value="Submit">
@@ -47,7 +47,7 @@
                 </div>
 
                 {{-- Modal Edit--}}
-                <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
+                {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
 
@@ -62,7 +62,7 @@
                                 <form method="POST" id="FormEdit" action="#" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-
+                
                                   <div class="card-body">
                                     <div class="form-group">
                                       <label for="exampleInputEmail1">Name</label>
@@ -75,19 +75,19 @@
                                         <input value=""
                                         type="file" name='logo' id="logo" class="form-control" placeholder=""onchange="previewImageUpdate();"/>
                                       </div>
-
+                
                                   </div>
                                   <!-- /.card-body -->
-
+                
                                   <div class="card-footer">
-                                    <button type="submit" id="submit" class="btn btn-primary">Save Change</button>
+                                    <button type="submit" id="submit" class="btn btn-success">Submit</button>
                                   </div>
                                 </form>
                             </div>
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
@@ -161,4 +161,3 @@
         </script>
         @endsection
 @endsection
- 

@@ -32,16 +32,16 @@
                   {{ csrf_field() }}
                   <div class="form-group">
                     <label for="nama">Image</label>
-                    <input type="file" name='image' class="form-control" id="image" placeholder="Masukkan Foto">
+                    <input type="file" name='image' class="form-control" id="image">
                   </div>
                   <div class="form-group">
                     <label for="nama">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Insert Name" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <div class="form-group">
                     <label for="nama">Job</label>
-                    <input type="text" class="form-control" id="job" name="job" placeholder="Masukan Pekerjaan" required>
+                    <input type="text" class="form-control" id="job" name="job" placeholder="Job" required>
                     <small class="text-danger">{{ $errors->first('name') }}</small>
                   </div>
                   <div class="form-group">
@@ -51,7 +51,7 @@
                   </div>
                   <div class="form-group">
                     <label for="nama">Date</label>
-                    <input type="date" class="date form-control" id="date" name="date" placeholder="Masukan Tanggal" required>
+                    <input type="date" class="date form-control" id="date" name="date" placeholder="The Date" required>
                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                   </div>
                   <button type="submit" class="btn btn-success mt-4">Submit</button>
@@ -62,48 +62,24 @@
         </div>
 
         {{-- Modal Edit --}}
-        <div class="modal fade" id="modalEditTestimoni" tabindex="-1" aria-labelledby="modalEditTestimoni" aria-hidden="true">
+        {{-- <div class="modal fade" id="modalEditTestimoni" tabindex="-1" aria-labelledby="modalEditTestimoni" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
+
               <div class="modal-header">
-                <h5 class="modal-title">Create Testimonial</h5>
+                <h5 id="modal-title" class="modal-title">Create Testimonial</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               <div class="modal-body">
-                <form method="POST" action="{{route('testimonial.store')}}"enctype="multipart/form-data">
-                  {{ csrf_field() }}
-                  <div class="form-group">
-                    <label for="nama">Image</label>
-                    <input type="file" name='image' class="form-control" id="image" placeholder="Masukkan Foto">
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama" required>
-                    <small class="text-danger">{{ $errors->first('nama') }}</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Job</label>
-                    <input type="text" class="form-control" id="job" name="job" placeholder="Masukan Pekerjaan" required>
-                    <small class="text-danger">{{ $errors->first('name') }}</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Testimonial</label>
-                    <textarea name="testimonial" id="testimonial" class="form-control" cols="30" rows="10"></textarea>
-                    <small class="text-danger">{{ $errors->first('nama') }}</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="nama">Date</label>
-                    <input type="hidden" class="date form-control" id="date" name="date" placeholder="Masukan Tanggal" required>
-                    <small class="text-danger">{{ $errors->first('nama') }}</small>
-                  </div>
-                  <button type="submit" class="btn btn-success mt-4">Submit</button>
-                </form>
+                <div id="page" class="p-2"></div>
               </div>
+
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
 
@@ -141,8 +117,10 @@
         @method('delete')
         @csrf
       </form>
-
+      
+    {{-- Menampilkan Datatables --}}
      <script>
+
         $(function() {
             var table = $('.yajra-datatable').DataTable({
                 processing: true,
@@ -150,9 +128,9 @@
                 responsive: true,
                 ajax: "{{ route('testimonial.list') }}",
                 columns: [
-                {data: 'image', name: 'image',
+                {data: 'image', name: 'image', 
                 render: function( data, type, full, meta ) {
-                        return "<img src=\"/assets/img/" + data + "\" height=\"50\"/>";
+                        return "<img src=\"/data_file/" + data + "\" height=\"50\"/>";
                     },
                 orderable:true},
                 {data: 'name', name: 'name'},
@@ -168,16 +146,26 @@
                 ]
             });
         });
+
+        // Untuk modal halaman edit show
+        function show(id) {
+            $.get("{{ url('testimonial/edit') }}/" + id, {}, function(data, status) {
+                $("#modal-title").html('Edit Testimonial')
+                $("#page").html(data);
+                $("#modalEditTestimoni").modal('show');
+            });
+        }
+
     </script>
 
     <script type="text/javascript">
 
-      $('.date').datepicker({
-
+      $('.date').datepicker({  
+  
          format: 'yyyy-mm-dd'
-
-       });
-    </script>
+  
+       });  
+    </script> 
 
       <script>
         function notificationBeforeDelete(event, el) {

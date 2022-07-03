@@ -23,33 +23,31 @@
                   <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Image</label>
-                        <img  id="image-preview-update" width="100px" src="/assets/img/{{$testimonial->image}}" alt="">
-                        <input value="{{ $testimonial->image ?? old('image') }}"
-                        type="file" name='image' class="form-control" id="image-source-update" onchange="previewImageUpdate();"/>
+                        <img  id="image-preview-update" width="100px" src="/data_file/{{$testimonial->image}}" alt="">
+                        <input value="{{ $testimonial->image ?? old('image') }}" type="file" name='image' class="form-control" id="image-source-update" onchange="previewImageUpdate();" />
                       </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
-                      <input value="{{ $testimonial->name ?? old('name') }}"
-                      type="text" name='name' class="form-control" id="name" placeholder="Masukkan Nama " >
+                      <input value="{{ $testimonial->name ?? old('name') }}" type="text" name='name' class="form-control" id="name" placeholder="Masukkan Nama " required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Job</label>
                       <input value="{{ $testimonial->job ?? old('job') }}"
-                      type="text" name='job' class="form-control" id="job" placeholder="Masukkan Pekerjaan " >
+                      type="text" name='job' class="form-control" id="job" placeholder="Masukkan Pekerjaan " required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Testimonial</label>
-                        <textarea name="testimonial" id="testimonial" class="form-control">{{ $testimonial->testimonial ?? old('testimonial') }}</textarea>
+                        <textarea name="testimonial" id="testimonial" class="form-control" required>{{ $testimonial->testimonial ?? old('testimonial') }}</textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Date</label>
                         <input value="{{ $testimonial->date ?? old('date') }}"
-                        type="text" name='date' class="date form-control" id="date" placeholder="Masukkan Tanggal" >
+                        type="text" name='date' class="date form-control" id="date" placeholder="Masukkan Tanggal" required>
                       </div>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">submit</button>
+                    <button type="submit" class="btn btn-success">Save Changes</button>
                   </div>
                 </form>
               </div>
@@ -80,3 +78,13 @@
                });
             </script>
 @endsection
+
+{{-- <div class="p2">
+  <div class="form-group">
+      <input type="text" name="name" id="name" value="{{ $testimonial->name }}" class="form-control"
+          placeholder="name product">
+  </div>
+  <div class="form-group mt-2">
+      <button class="btn btn-warning" onClick="#">Update</button>
+  </div>
+</div> --}}

@@ -51,7 +51,7 @@
             <a href="{{route('testimonial.index')}}" class="nav-link {{ $elementActive == 'testimonial.index' ? 'active' : '' }}">
               <i class="nav-icon fas fa-comment"></i>
               <p>
-                Testimoni
+                Testimonial
               </p>
             </a>
           </li>

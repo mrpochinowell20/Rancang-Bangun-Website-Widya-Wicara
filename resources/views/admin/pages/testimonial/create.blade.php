@@ -18,26 +18,26 @@
           <form method="POST" action="{{route('testimonial.store')}}"enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="nama">Image</label>
-                <input type="file" name='image' class="form-control" id="nama" placeholder="Masukkan Foto">
+                <label for="nama">Foto</label>
+                <input type="file" name='image' class="form-control" id="nama" placeholder="Masukkan Foto" required>
               </div>
             <div class="form-group">
-              <label for="nama">Name</label>
+              <label for="nama">Nama</label>
               <input type="text" class="form-control" id="nama" name="name" placeholder="Masukan Nama" required>
               <small class="text-danger">{{ $errors->first('nama') }}</small>
             </div>
             <div class="form-group">
-              <label for="nama">Job</label>
+              <label for="nama">Pekerjaan</label>
               <input type="text" class="form-control" id="name" name="job" placeholder="Masukan Pekerjaan" required>
               <small class="text-danger">{{ $errors->first('name') }}</small>
             </div>
             <div class="form-group">
-              <label for="nama">Testimonial</label>
+              <label for="nama">Testimoni</label>
               <input type="text" class="form-control" id="nama" name="testimonial" placeholder="Masukan Testimoni" required>
               <small class="text-danger">{{ $errors->first('nama') }}</small>
             </div>
             <div class="form-group">
-                <label for="nama">Date</label>
+                <label for="nama">Tanggal</label>
                 <input type="text" class="form-control" id="nama" name="date" placeholder="Masukan Testimoni" required>
                 <small class="text-danger">{{ $errors->first('nama') }}</small>
               </div>

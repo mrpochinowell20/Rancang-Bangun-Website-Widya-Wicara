@@ -24,7 +24,7 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                         <label>Name</label>
-                            <input type="text" name="nama" class="form-control" placeholder="Masukkan Data">
+                            <input type="text" name="nama" class="form-control" placeholder="Insert The Name">
                         </div>
 
                         <div class="form-group">
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Submit">
+                            <input type="submit" class="btn btn-success" value="Simpan">
                         </div>
 
                     </form>

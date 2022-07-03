@@ -23,6 +23,14 @@ class TestimonialController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required',
+            'name' => 'required',
+            'job' => 'required',
+            'testimonial' => 'required',
+            'date' => 'required'
+        ]);
+
         // Menampung seluruh data
         // $todayTime = \Carbon\Carbon::now()->format('Y/m/d');
         $data = [
@@ -30,7 +38,7 @@ class TestimonialController extends Controller
             'name' => $request->name,
             'job' => $request->job,
             'testimonial' => $request->testimonial,
-            'date' => $request->date,
+            'date' => $request->date
         ];
 
         // Olah data gambar
@@ -70,7 +78,7 @@ class TestimonialController extends Controller
 
         if ($image = $request->file('image')) {
 
-            $destionation = 'assets/img/';
+            $destionation = 'data_file/';
             $nameImage = date('YmdHis').".".$image->getClientOriginalExtension();
             $image->move($destionation, $nameImage);
             $dataImage = $nameImage;
@@ -131,8 +139,8 @@ class TestimonialController extends Controller
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function($row) {
-                $editBtn = '<a data-toggle="modal" data-target="#modalEditTestimoni" href="' . route('testimonial.edit', $row) . '" class="btn btn-info btn-xs"><i class="far fa-edit"></i> Edit</a>';
-                $deleteBtn = '<a href="' . route('testimonial.destroy', $row) . '" onclick="notificationBeforeDelete(event, this)" class="btn btn-danger btn-xs"><i class="fas fa-trash"> Delete</a>';
+                $editBtn = '<a href="' . route('testimonial.edit', $row) . '" class="btn btn-md btn-info mr-2 mb-2 mb-lg-0"><i class="far fa-edit"></i> Edit</a>';
+                $deleteBtn = '<a href="' . route('testimonial.destroy', $row) . '" onclick="notificationBeforeDelete(event, this)" class="btn btn-md btn-danger btn-delete"><i class="fas fa-trash"></i> Delete</a>';
                 return $editBtn . $deleteBtn;
             })
             ->rawColumns(['gambar', 'action'])
